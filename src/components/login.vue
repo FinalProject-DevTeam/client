@@ -12,14 +12,7 @@
             </span>
           </div>
           <div id="navbarMenuHeroB" class="navbar-menu">
-            <!-- <div class="navbar-end">
-              <a @click="logOut" class="navbar-item">
-              Logout
-            </a>
-              <span class="navbar-item">
 
-              </span>
-            </div> -->
           </div>
         </div>
       </nav>
@@ -37,9 +30,6 @@
 <script>
 import firebase from 'firebase';
 import firebaseui from 'firebaseui';
-import {
-  config
-} from '../firebaseConfig';
 
 export default {
   components: {},
