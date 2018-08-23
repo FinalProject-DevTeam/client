@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/login.vue'
+import Customer from './views/customerpage.vue'
 
 
 
@@ -14,6 +15,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Login
+    },
+    {
+      path: '/customer',
+      name: 'customer',
+      component: Customer
     },
    {
       path: '/about',
