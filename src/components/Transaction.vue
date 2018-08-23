@@ -15,9 +15,7 @@
                       <option v-for="(customer, i) in customers" :value='customer.id' v-bind:key='i'>{{customer.name}}</option>
                     </b-select>
                   </b-field>
-
                 </section>
-
                 <section>
                   <hr color="#eee">
                   <p class="content">

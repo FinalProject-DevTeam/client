@@ -100,13 +100,13 @@ export default new Vuex.Store({
       })
 
         .then(result => {
-              let datas = result.data.data
-              let onlyname = []
-              for (let i = 0; i < datas.length; i++) {
-                onlyname.push(datas[i].name + '    id:' + datas[i].id)
-              }
-          commit('customerNames', onlyname)
-          console.log(onlyname)
+          //     let datas = result.data.data
+          //     let onlyname = []
+          //     for (let i = 0; i < datas.length; i++) {
+          //       onlyname.push(datas[i].name + '    id:' + datas[i].id)
+          //     }
+          // commit('customerNames', onlyname)
+          // console.log(onlyname)
           commit('customersData', result.data.data)
         })
 
