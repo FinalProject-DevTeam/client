@@ -1,9 +1,9 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Login from './views/login.vue'
-import Customer from './views/customerpage.vue'
-import Transaction from './views/transactionpage.vue'
-import Promo from './views/promopage.vue'
+import Vue from 'vue';
+import Router from 'vue-router';
+import Login from './views/Login.vue';
+import Customer from './views/CustomerPage.vue';
+import Transaction from './views/TransactionPage.vue';
+import Promo from './views/PromoPage.vue';
 
 
 Vue.use(Router)
@@ -32,14 +32,19 @@ export default new Router({
       name: 'transaction',
       component: Transaction
     },
-   {
-      path: '/about',
-      name: 'about',
+    {
+      path: '/dashboard',
+      name: 'dashboard',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import (/* webpackChunkName: "about" */
-      './views/About.vue')
-    }
+      './views/Dashboard.vue')
+    },
+    {
+      path: '/detailCustomer/:id',
+      name: 'detailcustomer',
+      component: DetailCustomer
+    },
   ]
 })

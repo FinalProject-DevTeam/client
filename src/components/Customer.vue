@@ -1,8 +1,7 @@
 <template>
-<div class="cust">
+<div class="customercomponent">
   <div class="s">
     <div class="notification">
-
       <div class="tile is-ancestor">
         <div class="tile is-parent">
           <article class="tile is-child box">
@@ -30,8 +29,8 @@
                 <div class="field-body">
                   <div class="select">
                     <select v-model="gender">
-                     <option>Select gender</option>
-                     <option>Male</option>
+                      <option selected>Select gender</option>
+                      <option>Male</option>
                       <option>Female</option>
                   </select>
                   </div>
@@ -56,25 +55,24 @@
                 <div class="field-body">
                   <div class="select">
                     <select v-model="occupation">
-                     <option>Select Occupation</option>
-                     <option>Businessperson</option>
+                      <option>Select Occupation</option>
+                      <option>Businessperson</option>
                       <option>Student</option>
                       <option>Police</option>
-                       <option>Soldier</option>
-                       <option>CEO</option>
-                        <option>CFO</option>
-                        <option>Developer</option>
-                         <option>Tradesman</option>
-                         <option>Doctor</option>
-                          <option>Lecturer</option>
-
-                          <option>Instructor</option>
-                           <option>Security</option>
-                           <option>Driver</option>
-                            <option>Chef</option>
-                            <option>Waitress</option>
-                             <option>Presenter</option>
-                              <option>Other</option>
+                      <option>Soldier</option>
+                      <option>CEO</option>
+                      <option>CFO</option>
+                      <option>Developer</option>
+                      <option>Tradesman</option>
+                      <option>Doctor</option>
+                      <option>Lecturer</option>
+                      <option>Instructor</option>
+                      <option>Security</option>
+                      <option>Driver</option>
+                      <option>Chef</option>
+                      <option>Waitress</option>
+                      <option>Presenter</option>
+                      <option>Other</option>
                   </select>
                   </div>
                 </div>
@@ -103,14 +101,15 @@
                   </div>
                 </div>
               </div>
-
               <div class="field is-grouped">
-                <a class="button is-primary">Save data</a>
+                <a class="button is-primary" @click="addCustomer">Save data</a>
               </div>
             </div>
-
           </article>
         </div>
+
+
+
         <div class="tile is-parent is-8">
           <article class="tile is-child box">
             <p class="title">Customer Data</p>
@@ -118,7 +117,6 @@
               <table class="table is-hoverable">
                 <thead>
                   <tr>
-                    <th><abbr title="Position">Pos</abbr></th>
                     <th><abbr title="Played">Name</abbr></th>
                     <th><abbr title="Won">Gender</abbr></th>
                     <th><abbr title="Drawn">Email</abbr></th>
@@ -126,80 +124,76 @@
                     <th><abbr title="Goals for">Birthyear</abbr></th>
                     <th><abbr title="Goals against">occupation</abbr></th>
                     <th><abbr title="Goals against">action </abbr></th>
-
                   </tr>
                 </thead>
-
+              
                 <tbody>
-                  <tr>
-                    <th>1</th>
-                    <td> jhlk
-                    </td>
-
-                    <td>23</td>
-                    <td>12</td>
-                    <td>3</td>
-                    <td>68</td>
-                    <td>35</td>
+                  <tr v-for="(customer, index) in customers" :key="index">
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.gender }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.phoneNumber }}</td>
+                    <td>{{ customer.birthYear }}</td>
+                    <td>{{ customer.occupation }}</td>
                     <td> <span class="button">edit</span> <span class="button">delete</span></td>
                   </tr>
-                  <tr>
-                    <th>2</th>
-                    <td>skjbss</td>
-                    <td>38</td>
-                    <td>20</td>
-
-                    <td>7</td>
-                    <td>65</td>
-                    <td>35</td>
-                    <td> <span class="button">edit</span> <span class="button">delete</span></td>
-                  </tr>
-
-                  <tr>
-                    <th>5</th>
-                    <td><a href="https://en.wikipedia.org/wiki/Manchester_United_F.C." title="Manchester United F.C.">Manchester United</a></td>
-                    <td>38</td>
-
-                    <td>9</td>
-                    <td>10</td>
-                    <td>49</td>
-                    <td>35</td>
-                    <td> <span class="button">edit</span> <span class="button">delete</span></td>
-                  </tr>
-
-
                 </tbody>
               </table>
-              {{name}} {{email}} {{birthyear}} {{phonenumber}} {{gender}} {{occupation}}
-
             </div>
           </article>
         </div>
       </div>
     </div>
+    </div>
   </div>
-
-
-</div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
-  name: 'customerpage',
+  name: "customerpage",
   props: {
     msg: String
   },
   data: function() {
     return {
-      name: 'ini data',
-      gender: '',
-      email: '',
-      phonenumber: '',
-      birthyear: '',
-      occupation: '',
+      name: "",
+      gender: "",
+      email: "",
+      phonenumber: "",
+      birthyear: "",
+      occupation: ""
+    };
+  },
+  computed: {
+    ...mapState([
+      'customers',
+    ]),
+  },
+  created() {
+    this.getCustomers();
+  },
+  methods: {
+    ...mapActions([
+      'inputCustomer', 'getCustomers'
+    ]),
+    addCustomer() {
+      const uid = localStorage.getItem('uid');
+
+      const newCustomer = {
+        name: this.name,
+        gender: this.gender,
+        email: this.email,
+        phoneNumber: this.phonenumber,
+        birthYear: this.birthyear,
+        occupation: this.occupation,
+        restaurantId: uid,
+      }
+      this.inputCustomer(newCustomer)
     }
-  }
-}
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
