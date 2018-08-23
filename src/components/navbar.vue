@@ -19,10 +19,10 @@
               <a class="navbar-item is-active">
                 Home
               </a>
-              <a hre="/customer" class="navbar-item">
+              <a href="/customer" class="navbar-item">
                 Add Customer
               </a>
-              <a class="navbar-item">
+              <a href="/transaction" class="navbar-item">
                 Add Transaction
               </a>
               <a class="navbar-item">
