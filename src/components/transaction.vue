@@ -14,7 +14,7 @@
                 <section>
                   <p class="content"><b>Selected:</b> {{ selected }}</p>
                   <b-field label="Find customer Name">
-                    <b-autocomplete rounded v-model="name" :data="filteredDataArray" placeholder="e.g. jQuery" icon="magnify" @select="option => selected = option">
+                    <b-autocomplete rounded v-model="name" :data="filteredDataArray" placeholder="e.g. Udang goreng" icon="magnify" @select="option => selected = option">
                       <template slot="empty">No results found</template>
                     </b-autocomplete>
                   </b-field>
@@ -68,9 +68,9 @@
             <table class="table is-hoverable">
               <thead>
                 <tr>
-                  <th><abbr title="Position">Trans. id</abbr></th>
+                  <th><abbr title="Position">Transaction id</abbr></th>
                   <th><abbr title="Played">Cust. Name</abbr></th>
-                  <th><abbr title="Drawn">Ordered menu</abbr></th>
+                  <th><abbr title="Drawn">Menu</abbr></th>
                   <th><abbr title="Lost">transaction date</abbr></th>
                   <th><abbr title="Goals against">action </abbr></th>
 
@@ -88,7 +88,7 @@
                 <tr>
                   <th>2</th>
                   <td>Yusuf Ss</td>
-                  <td>Pizza</td>
+                  <td>Pizza, Kentang Goreng</td>
 
                   <td>12/11/1999</td>
 
