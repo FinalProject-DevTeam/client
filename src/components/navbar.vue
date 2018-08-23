@@ -25,6 +25,9 @@
               <a href="/transaction" class="navbar-item">
                 Add Transaction
               </a>
+              <a href="/promo" class="navbar-item">
+                Promo
+              </a>
               <a class="navbar-item">
                 Logout
               </a>
@@ -44,3 +47,8 @@ export default {
 
 }
 </script>
+<style scoped>
+.hero {
+  margin-bottom: 20px
+}
+</style>

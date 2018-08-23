@@ -18,7 +18,7 @@
                 <div class="field-body">
                   <div class="field">
                     <p class="control">
-                      <input class="input" type="text" placeholder=" name">
+                      <input v-model="name" class="input" type="text" placeholder=" name">
                     </p>
                   </div>
                 </div>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="field-body">
                   <div class="select">
-                    <select>
+                    <select v-model="gender">
                      <option>Select gender</option>
                      <option>Male</option>
                       <option>Female</option>
@@ -44,7 +44,7 @@
                 <div class="field-body">
                   <div class="field">
                     <p class="control">
-                      <input class="input" type="email" placeholder=" email">
+                      <input v-model="email" class="input" type="email" placeholder=" email">
                     </p>
                   </div>
                 </div>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="field-body">
                   <div class="select">
-                    <select>
+                    <select v-model="occupation">
                      <option>Select Occupation</option>
                      <option>Businessperson</option>
                       <option>Student</option>
@@ -86,7 +86,7 @@
                 <div class="field-body">
                   <div class="field">
                     <p class="control">
-                      <input class="input" type="text" placeholder="phone ">
+                      <input v-model="phonenumber" class="input" type="text" placeholder="phone ">
                     </p>
                   </div>
                 </div>
@@ -98,7 +98,7 @@
                 <div class="field-body">
                   <div class="field">
                     <p class="control">
-                      <input class="input" type="text" placeholder="birth year">
+                      <input v-model="birthyear" class="input" type="text" placeholder="birth year">
                     </p>
                   </div>
                 </div>
@@ -133,7 +133,7 @@
                 <tbody>
                   <tr>
                     <th>1</th>
-                    <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester City</a> <strong>(C)</strong>
+                    <td> jhlk
                     </td>
 
                     <td>23</td>
@@ -145,7 +145,7 @@
                   </tr>
                   <tr>
                     <th>2</th>
-                    <td><a href="https://en.wikipedia.org/wiki/Arsenal_F.C." title="Arsenal F.C.">Arsenal</a></td>
+                    <td>skjbss</td>
                     <td>38</td>
                     <td>20</td>
 
@@ -170,7 +170,7 @@
 
                 </tbody>
               </table>
-
+              {{name}} {{email}} {{birthyear}} {{phonenumber}} {{gender}} {{occupation}}
 
             </div>
           </article>
@@ -188,6 +188,16 @@ export default {
   name: 'customerpage',
   props: {
     msg: String
+  },
+  data: function() {
+    return {
+      name: 'ini data',
+      gender: '',
+      email: '',
+      phonenumber: '',
+      birthyear: '',
+      occupation: '',
+    }
   }
 }
 </script>
