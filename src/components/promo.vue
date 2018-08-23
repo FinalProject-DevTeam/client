@@ -56,8 +56,8 @@
               <!-- Label left empty for spacing -->
               <p class="control">
                 <button class="button is-primary">
-                           Blast Email
-                         </button>
+                  Blast Email
+                </button>
               </p>
             </b-field>
           </section>
