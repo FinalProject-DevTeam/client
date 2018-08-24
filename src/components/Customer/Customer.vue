@@ -96,7 +96,7 @@
                   <div class="field-body">
                     <div class="field">
                       <p class="control">
-                        <input v-model="birthyear" class="input" type="date" placeholder="Enter Birth Year">
+                        <input v-model="birthyear" class="input" type="test" placeholder="Birth Year">
                       </p>
                     </div>
                   </div>
@@ -192,9 +192,11 @@ export default {
         restaurantId: uid,
       }
       this.inputCustomer(newCustomer)
+      this.getCustomers()
     },
     removeCustomer(id) {
       this.deleteCustomer(id)
+      this.getCustomers()
     }
   },
 };

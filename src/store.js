@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import axios from 'axios';
 import swal from 'sweetalert2';
 import router from './router';
+import firebase from 'firebase';
 
 Vue.use(Vuex)
 
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     singleTransactionData(state, payload){
       state.singleTransaction = payload
+    },
+    addCustomerData (state, payload) {
+      state.customers = payload
     }
   },
   actions: {
@@ -41,7 +45,7 @@ export default new Vuex.Store({
             `${result.data.msg}`,
             'success'
           )
-          router.push('/dashboard');
+          router.push('/customer');
         })
 
         .catch(err => {
@@ -201,7 +205,7 @@ export default new Vuex.Store({
             `${result.data.msg}`,
             'success'
           );
-          router.push('/dashboard');
+          router.push('/customer');
         })
 
         .catch(err => {
@@ -231,8 +235,10 @@ export default new Vuex.Store({
             'error'
           )
         })
-
+    },
+    logOut ({ commit }) {
+      firebase.auth().signOut();
+      router.push('/')
     }
-
   }
 })

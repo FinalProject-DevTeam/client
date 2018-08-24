@@ -5,7 +5,7 @@ import Customer from './views/CustomerPage.vue';
 import Transaction from './views/TransactionPage.vue';
 import Promo from './views/PromoPage.vue';
 import DetailCustomer from './views/DetailCustomer.vue'
-import TransactionUpdate from './views/EditTransactionPage.vue'
+import TransactionUpdate from './views/UpdateTransactionPage.vue'
 
 
 Vue.use(Router)
@@ -17,7 +17,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Login
+      component: Login,
     },
     {
       path: '/customer',

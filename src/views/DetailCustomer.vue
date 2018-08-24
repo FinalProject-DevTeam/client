@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import Nav from '../components/Navbar.vue';
+  import Nav from '../components/Header/Navbar.vue';
   import DetailPageCustomer from '../components/UpdateCustomer/UpdatePageCustomer.vue';
 
   export default {
