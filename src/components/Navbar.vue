@@ -20,10 +20,10 @@
                 Home
               </a>
               <a href="/customer" class="navbar-item">
-                Add Customer
+                Customer
               </a>
               <a href="/transaction" class="navbar-item">
-                Add Transaction
+                Transaction
               </a>
               <a href="/promo" class="navbar-item">
                 Promo

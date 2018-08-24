@@ -10,7 +10,9 @@ export default new Vuex.Store({
   state: {
     customers: null,
     transactions:null,
-    onlyNames:null
+    onlyNames:null,
+    singleCustomer:null,
+    singleTransaction:null
   },
   mutations: {
     customersData (state, payload) {
@@ -21,6 +23,12 @@ export default new Vuex.Store({
     },
     transactionData (state, payload) {
       state.transactions = payload
+    },
+    singleCustomerData (state, payload){
+      state.singleCustomer = payload
+    },
+    singleTransactionData(state, payload){
+      state.singleTransaction = payload
     }
   },
   actions: {
@@ -68,6 +76,28 @@ export default new Vuex.Store({
         })
     },
 
+    updateTransaction({ commit }, payload) {
+      axios.put(`http://localhost:3000/transaction/${payload.id}`, payload.data)
+
+        .then(result => {
+          swal(
+            'Good Job',
+            `successfully updated`,
+            'success'
+          )
+          router.push('/transaction');
+        })
+
+        .catch(err => {
+          console.log(err)
+          swal(
+            'Failed!',
+            `${err.msg}`,
+            'error'
+          )
+        })
+    },
+
     deleteTransaction({ commit }, payload) {
       axios.delete(`http://localhost:3000/transaction/${payload}`)
 
@@ -92,21 +122,12 @@ export default new Vuex.Store({
 
     getCustomers({ commit }) {
       const restaurantId = localStorage.getItem('uid')
-
       axios.get(`http://localhost:3000/customer`, {
         headers: {
           uid: restaurantId
         }
       })
-
         .then(result => {
-          //     let datas = result.data.data
-          //     let onlyname = []
-          //     for (let i = 0; i < datas.length; i++) {
-          //       onlyname.push(datas[i].name + '    id:' + datas[i].id)
-          //     }
-          // commit('customerNames', onlyname)
-          // console.log(onlyname)
           commit('customersData', result.data.data)
         })
 
@@ -118,6 +139,37 @@ export default new Vuex.Store({
           )
         })
     },
+    getSingleCustomer({ commit }, payload) {
+      axios.get(`http://localhost:3000/customer/${payload}`)
+        .then(result => {
+          commit('singleCustomerData', result.data.data)
+        })
+
+        .catch(err => {
+          swal(
+            'Failed',
+            'Cannot Load',
+            'error'
+          )
+        })
+    },
+
+    getSingleTransaction({ commit }, payload) {
+      axios.get(`http://localhost:3000/transaction/${payload}`)
+        .then(result => {
+          commit('singleTransactionData', result.data.data)
+        })
+
+        .catch(err => {
+          swal(
+            'Failed',
+            'Cannot Load',
+            'error'
+          )
+        })
+    },
+
+
     getTransactions({ commit }) {
       const restaurantId = localStorage.getItem('uid')
 

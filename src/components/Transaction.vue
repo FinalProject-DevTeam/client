@@ -10,7 +10,7 @@
               <p class="title">Add New Transaction:</p>
               <div class="content">
                 <section>
-                  <b-field label="Select a Name">
+                  <b-field label="Select Name">
                     <b-select icon="account" v-model='id' placeholder="Select Name">
                       <option v-for="(customer, i) in customers" :value='customer.id' v-bind:key='i'>{{customer.name}}</option>
                     </b-select>
@@ -48,7 +48,7 @@
                     </b-checkbox>
                   </div>
                   <p class="content ">
-                    <a class="button is-success" @click="addTransactions">Submit Transaction</a>
+                    <a class="button is-success" @click="addTransactions">Add Transaction</a>
                   </p>
                 </section>
 
@@ -59,7 +59,7 @@
         <div class="tile is-parent is-8 ">
           <article class="tile is-child box ">
 
-            <p class="title ">data Transaction </p>
+            <p class="title">List Transaction </p>
             <table class="table is-hoverable ">
               <thead>
                 <tr>
@@ -76,7 +76,9 @@
                   <td>{{transaction.customerId}}</td>
                   <td>{{transaction.itemsOrdered.toString()}}</td>
                   <td>{{transaction.createdAt}}</td>
-                  <td> <span class="button ">edit</span> <span class="button is-danger is-outlined " @click='removeTransaction(transaction.id)'>delete</span></td>
+                  <td>
+                    <router-link :to="`/transaction/${transaction.id}`" class="button is-outlined">Update</router-link>
+                    <span class="button is-danger is-outlined " @click='removeTransaction(transaction.id)'>delete</span></td>
                 </tr>
               </tbody>
             </table>
@@ -113,15 +115,6 @@ export default {
     ...mapState([
       'customers', 'transactions', 'onlyNames'
     ]),
-
-    // filteredDataArray() {
-    //   return this.onlyNames.filter((option) => {
-    //     return option
-    //       .toString()
-    //       .toLowerCase()
-    //       .indexOf(this.name.toLowerCase()) >= 0
-    //   })
-    // },
   },
 
 
@@ -131,7 +124,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'inputCustomer', 'getCustomers', 'getTransactions', 'addTransaction', 'deleteTransaction'
+      'inputCustomer', 'getCustomers', 'getTransactions', 'addTransaction', 'deleteTransaction', 'updateTransaction'
     ]),
     addTransactions() {
       const uid = localStorage.getItem('uid');
@@ -146,6 +139,9 @@ export default {
     removeTransaction(id) {
       this.deleteTransaction(id)
       console.log('successfully removed')
+    },
+    editTransaction(id) {
+      this.updateTransaction(id)
     }
   },
 }
