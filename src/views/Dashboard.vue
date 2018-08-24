@@ -1,17 +1,26 @@
 <template>
-  <div class="about">
+  <div class="dashboard">
     <Nav />
-    <h1>This is an about page</h1>
+    <HeadDashboard />
+    <br>
+    <Dashboard />
   </div>
 </template>
 
 <script>
 import Nav from '../components/Header/Navbar.vue';
+import HeadDashboard from '../components/Dashboard/HeadDashboard.vue';
+import Dashboard from '../components/Dashboard/Dashboard.vue';
 
 export default {
   components: {
-    Nav
+    Nav,
+    HeadDashboard,
+    Dashboard
   }  
 }
 </script>
+
+<style>
+</style>
 

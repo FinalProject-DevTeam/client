@@ -13,24 +13,33 @@ export default new Vuex.Store({
     transactions:null,
     onlyNames:null,
     singleCustomer:null,
-    singleTransaction:null
+    singleTransaction:null,
+    sampleCustomers: null,
+    sampleTransactions: null
   },
   mutations: {
     customersData (state, payload) {
-      state.customers = payload
+      state.customers = payload;
     },
     customerNames (state, payload) {
-      state.onlyNames = payload
+      state.onlyNames = payload;
     },
     transactionData (state, payload) {
-      state.transactions = payload
+      state.transactions = payload;
     },
     singleCustomerData (state, payload){
-      state.singleCustomer = payload
+      state.singleCustomer = payload;
     },
     singleTransactionData(state, payload){
-      state.singleTransaction = payload
+      state.singleTransaction = payload;
     },
+    sCustomers(state, payload) {
+      state.sampleCustomers = payload;
+    },
+    sTransactions(state, payload) {
+      state.sampleTransactions = payload;
+    }
+
   },
   actions: {
     inputCustomer({ commit }, payload) {
@@ -152,7 +161,14 @@ export default new Vuex.Store({
         }
       })
         .then(result => {
+          let sampleCustomers = [];
+
+          for(let i = 0; i < 4; i++) {
+            sampleCustomers.push(result.data.data[i])
+          }
+
           commit('customersData', result.data.data)
+          commit('sCustomers', sampleCustomers)
         })
 
         .catch(err => {
@@ -204,7 +220,14 @@ export default new Vuex.Store({
       })
 
         .then(result => {
+          let sampleTransactions = [];
+
+          for(let i = 0; i < 4; i++) {
+            sampleTransactions.push(result.data.data[i])
+          }
+
           commit('transactionData', result.data.data)
+          commit('sTransactions', sampleTransactions)
         })
 
         .catch(err => {
