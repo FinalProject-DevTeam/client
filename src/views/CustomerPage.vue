@@ -7,7 +7,7 @@
 
 <script>
 import Nav from '../components/Navbar.vue';
-import Customer from '../components/Customer.vue';
+import Customer from '../components/Customer/Customer.vue';
 
 export default {
   components: {

@@ -1,13 +1,16 @@
 <template>
   <div class="detailcustomer">
     <Nav />
-    <DetailPageCustomer />
+
+    <div class="container">
+      <DetailPageCustomer />
+    </div>
   </div>
 </template>
 
 <script>
   import Nav from '../components/Navbar.vue';
-  import DetailPageCustomer from '../components/DetailCustomer/DetailPageCustomer.vue';
+  import DetailPageCustomer from '../components/UpdateCustomer/UpdatePageCustomer.vue';
 
   export default {
     components: {

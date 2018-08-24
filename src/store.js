@@ -211,6 +211,27 @@ export default new Vuex.Store({
             'error'
           );
         })
+    },
+    updateCustomer({ commit }, payload) {
+      axios.put(`http://localhost:3000/customer/${payload.id}`, payload.data)
+
+        .then(result => {
+          swal(
+            'Good Job',
+            `${result.data.msg}`,
+            'success'
+          )
+          router.push('/customer')
+        })
+
+        .catch(err => {
+          swal(
+            'Failed',
+            `Error Update Data`,
+            'error'
+          )
+        })
+
     }
 
   }

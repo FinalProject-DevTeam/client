@@ -5,31 +5,31 @@
         <div class="tile is-ancestor">
           <div class="tile is-parent">
             <article class="tile is-child box">
-              <p class="title">Add customer data</p>
-              <p class="subtitle">-</p>
+              <p class="title">Add Customer Data</p>
+              <hr>
               <div class="content">
                 <div class="field is-horizontal">
                 </div>
                 <div class="field is-horizontal">
                   <div class="field-label is-normal">
-                    <label class="label">name</label>
+                    <label class="label">Name</label>
                   </div>
                   <div class="field-body">
                     <div class="field">
                       <p class="control">
-                        <input v-model="name" class="input" type="text" placeholder=" name">
+                        <input v-model="name" class="input" type="text" placeholder="Enter Name">
                       </p>
                     </div>
                   </div>
                 </div>
                 <div class="field is-horizontal">
                   <div class="field-label is-normal">
-                    <label class="label">gender</label>
+                    <label class="label">Gender</label>
                   </div>
                   <div class="field-body">
                     <div class="select">
                       <select v-model="gender">
-                        <option selected>Select gender</option>
+                        <option selected>Select Gender</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
@@ -43,7 +43,7 @@
                   <div class="field-body">
                     <div class="field">
                       <p class="control">
-                        <input v-model="email" class="input" type="email" placeholder=" email">
+                        <input v-model="email" class="input" type="email" placeholder="Enter email">
                       </p>
                     </div>
                   </div>
@@ -84,19 +84,19 @@
                   <div class="field-body">
                     <div class="field">
                       <p class="control">
-                        <input v-model="phonenumber" class="input" type="text" placeholder="phone ">
+                        <input v-model="phonenumber" class="input" type="text" placeholder="Enter Phone Number ">
                       </p>
                     </div>
                   </div>
                 </div>
                 <div class="field is-horizontal">
                   <div class="field-label is-normal">
-                    <label class="label">Birthyear</label>
+                    <label class="label">Birth Year</label>
                   </div>
                   <div class="field-body">
                     <div class="field">
                       <p class="control">
-                        <input v-model="birthyear" class="input" type="text" placeholder="birth year">
+                        <input v-model="birthyear" class="input" type="date" placeholder="Enter Birth Year">
                       </p>
                     </div>
                   </div>
@@ -112,7 +112,8 @@
 
         <div class="tile is-parent is-8">
           <article class="tile is-child box">
-            <p class="title">Customer Data</p>
+            <p class="title">List Customers</p>
+            <hr>
             <div class="content">
               <table class="table is-hoverable">
                 <thead>
@@ -122,8 +123,8 @@
                     <th><abbr title="Drawn">Email</abbr></th>
                     <th><abbr title="Lost">Phone Number</abbr></th>
                     <th><abbr title="Goals for">Birthyear</abbr></th>
-                    <th><abbr title="Goals against">occupation</abbr></th>
-                    <th><abbr title="Goals against">action </abbr></th>
+                    <th><abbr title="Goals against">Occupation</abbr></th>
+                    <th><abbr title="Goals against">Action </abbr></th>
                   </tr>
                 </thead>
               
@@ -135,7 +136,7 @@
                     <td>{{ customer.phoneNumber }}</td>
                     <td>{{ customer.birthYear }}</td>
                     <td>{{ customer.occupation }}</td>
-                    <td> <span class="button"><router-link :to='`/detailCustomer/${customer.id}`'>edit</router-link></span> <span class="button" @click='removeCustomer(customer.id)'>delete</span></td>
+                    <td> <span class="button"><router-link :to='`/detailCustomer/${customer.id}`'>Update</router-link></span> <span class="button" @click='removeCustomer(customer.id)'>Delete</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -193,7 +194,6 @@ export default {
       this.inputCustomer(newCustomer)
     },
     removeCustomer(id) {
-      // console.log("di customer remove", id)
       this.deleteCustomer(id)
     }
   },
