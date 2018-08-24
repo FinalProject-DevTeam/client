@@ -20,31 +20,52 @@
                     <p class="content">
                       <b>Choose Menu:</b>
                     </p>
-                    <div class="block">
-                      <b-checkbox native-value="Nasi Goreng" v-model="menus">
-                        Nasi Goreng
-                      </b-checkbox>
-                      <b-checkbox native-value="Ayam Goreng" v-model="menus">
-                        Ayam Goreng
-                      </b-checkbox>
-                      <b-checkbox native-value="Udang Goreng" v-model="menus">
-                        Udang Goreng
-                      </b-checkbox>
-                      <b-checkbox native-value="Salmon Goreng" v-model="menus">
-                        Salmon Goreng
-                      </b-checkbox>
-                      <b-checkbox native-value="Pisang Goreng" v-model="menus">
-                        Pisang Goreng
-                      </b-checkbox>
-                      <b-checkbox native-value="Kentang Goreng" v-model="menus">
-                        Kentang Goreng
-                      </b-checkbox>
-                      <b-checkbox native-value="Pizza" v-model="menus">
-                        Pizza
-                      </b-checkbox>
-                      <b-checkbox native-value="Sate" v-model="menus">
-                        Sate
-                      </b-checkbox>
+                    <div class="columns">
+                      <div class="column is-6">
+                        <div class="field">
+                          <b-checkbox native-value="Nasi Goreng" v-model="menus">
+                            Nasi Goreng
+                          </b-checkbox>
+                        </div>
+                        <div class="field">
+                          <b-checkbox native-value="Ayam Goreng" v-model="menus">
+                            Ayam Goreng
+                          </b-checkbox>
+                        </div>
+                        <div class="field">
+                          <b-checkbox native-value="Udang Goreng" v-model="menus">
+                            Udang Goreng
+                          </b-checkbox>
+                        </div>
+                        <div class="field">
+                          <b-checkbox native-value="Salmon Goreng" v-model="menus">
+                            Salmon Goreng
+                          </b-checkbox>
+                        </div>
+                      </div>
+                      <div class="column is-6">
+                        <div class="field">
+                          <b-checkbox native-value="Pisang Goreng" v-model="menus">
+                            Pisang Goreng
+                          </b-checkbox>
+                        </div>
+                        <div class="field">
+                          <b-checkbox native-value="Kentang Goreng" v-model="menus">
+                            Kentang Goreng
+                          </b-checkbox>
+                        </div>
+                        <div class="field">
+                          <b-checkbox native-value="Pizza" v-model="menus">
+                            Pizza
+                          </b-checkbox>
+                        </div>
+                        <div class="field">
+                          <b-checkbox native-value="Sate" v-model="menus">
+                            Sate
+                          </b-checkbox>
+                        </div>
+                    </div>
+                      
                     </div>
                     <p class="content ">
                       <a class="button is-success" @click="addTransactions">Add Transaction</a>
