@@ -6,8 +6,9 @@
 </template>
 
 <script>
-import Customer from '../components/Customer.vue';
 import Nav from '../components/Navbar.vue';
+import Customer from '../components/Customer.vue';
+
 export default {
   components: {
     Customer,

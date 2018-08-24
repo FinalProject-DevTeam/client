@@ -4,7 +4,7 @@ import Login from './views/Login.vue';
 import Customer from './views/CustomerPage.vue';
 import Transaction from './views/TransactionPage.vue';
 import Promo from './views/PromoPage.vue';
-
+import DetailCustomer from './views/DetailCustomer';
 
 Vue.use(Router)
 

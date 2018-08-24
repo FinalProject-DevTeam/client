@@ -32,7 +32,7 @@ export default new Vuex.Store({
           console.log(err)
           swal(
             'Failed!',
-            `${err.msg}`,
+            `Failed to add customer`,
             'error'
           )
         })
@@ -56,6 +56,27 @@ export default new Vuex.Store({
             'Cannot Load',
             'error'
           )
+        })
+    },
+    deleteCustomer({ commit }, payload) {
+      console.log("di store deletecustomer", payload)
+      axios.delete(`http://localhost:3000/customer/${payload}`)
+
+        .then(result => {
+          swal(
+            'Success',
+            `${result.data.msg}`,
+            'success'
+          );
+          router.push('/dashboard');
+        })
+
+        .catch(err => {
+          swal(
+            'Failed',
+            `Failed to delete customer`,
+            'error'
+          );
         })
     }
   }
