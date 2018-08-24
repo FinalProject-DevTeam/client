@@ -28,7 +28,7 @@
               <a href="/promo" class="navbar-item">
                 Promo
               </a>
-              <a class="navbar-item">
+              <a class="navbar-item" @click="setLogOut">
                 Logout
               </a>
             </div>
@@ -42,10 +42,19 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'navbars',
-
-}
+  methods: {
+    ...mapActions([
+      'logOut'
+    ]),
+    setLogOut() {
+      this.logOut()
+    }
+  }
+};
 </script>
 <style scoped>
 .hero {

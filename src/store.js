@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import axios from 'axios';
 import swal from 'sweetalert2';
 import router from './router';
+import firebase from 'firebase';
 
 Vue.use(Vuex)
 
@@ -29,7 +30,7 @@ export default new Vuex.Store({
     },
     singleTransactionData(state, payload){
       state.singleTransaction = payload
-    }
+    },
   },
   actions: {
     inputCustomer({ commit }, payload) {
@@ -41,20 +42,20 @@ export default new Vuex.Store({
             `${result.data.msg}`,
             'success'
           )
-          router.push('/dashboard');
+          router.push('/customer');
         })
 
         .catch(err => {
           console.log(err)
           swal(
             'Failed!',
-            `${err.msg}`,
+            `Failed to add customer`,
             'error'
           )
         })
     },
 
-    addTransaction({ commit }, payload) {
+    inputTransaction({ commit }, payload) {
       axios.post(`http://localhost:3000/transaction`, payload)
 
         .then(result => {
@@ -63,7 +64,7 @@ export default new Vuex.Store({
             `${result.data.msg}`,
             'success'
           )
-          router.push('/dashboard');
+          router.push('/transaction');
         })
 
         .catch(err => {
@@ -107,7 +108,7 @@ export default new Vuex.Store({
             `successfully removed`,
             'success'
           )
-          router.push('/dashboard');
+          router.push('/transaction');
         })
 
         .catch(err => {
@@ -191,7 +192,50 @@ export default new Vuex.Store({
           )
         })
     },
+    deleteCustomer({ commit }, payload) {
+      // console.log("di store deletecustomer", payload)
+      axios.delete(`http://localhost:3000/customer/${payload}`)
 
+        .then(result => {
+          swal(
+            'Success',
+            `${result.data.msg}`,
+            'success'
+          );
+          router.push('/customer');
+        })
 
+        .catch(err => {
+          swal(
+            'Failed',
+            `Failed to delete customer`,
+            'error'
+          );
+        })
+    },
+    updateCustomer({ commit }, payload) {
+      axios.put(`http://localhost:3000/customer/${payload.id}`, payload.data)
+
+        .then(result => {
+          swal(
+            'Good Job',
+            `${result.data.msg}`,
+            'success'
+          )
+          router.push('/customer')
+        })
+
+        .catch(err => {
+          swal(
+            'Failed',
+            `Error Update Data`,
+            'error'
+          )
+        })
+    },
+    logOut ({ commit }) {
+      firebase.auth().signOut();
+      router.push('/')
+    }
   }
 })

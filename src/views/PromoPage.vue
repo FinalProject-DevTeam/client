@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Promo from '../components/Promo.vue';
-import Nav from '../components/Navbar.vue';
+import Promo from '../components/Promo/Promo.vue';
+import Nav from '../components/Header/Navbar.vue';
 
 export default {
   components: {

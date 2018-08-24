@@ -6,14 +6,13 @@
 </template>
 
 <script>
-import Transactionpage from '../components/Transaction.vue'
-import Nav from '../components/Navbar.vue'
+import Transactionpage from '../components/Transaction/Transaction.vue';
+import Nav from '../components/Header/Navbar.vue';
 
 export default {
   components: {
     Transactionpage,
     Nav
   },
-
-}
+};
 </script>
