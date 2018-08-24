@@ -7,6 +7,7 @@ import Promo from './views/PromoPage.vue';
 import DetailCustomer from './views/DetailCustomer.vue'
 import TransactionUpdate from './views/EditTransactionPage.vue'
 
+
 Vue.use(Router)
 
 export default new Router({

@@ -1,112 +1,112 @@
 <template>
-<div class="customercomponent">
-  <div class="s">
-    <div class="notification">
-      <div class="tile is-ancestor">
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">Add customer data</p>
-            <p class="subtitle">-</p>
-            <div class="content">
-              <div class="field is-horizontal">
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">name</label>
+  <div class="customercomponent">
+    <div class="s">
+      <div class="notification">
+        <div class="tile is-ancestor">
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <p class="title">Add customer data</p>
+              <p class="subtitle">-</p>
+              <div class="content">
+                <div class="field is-horizontal">
                 </div>
-                <div class="field-body">
-                  <div class="field">
-                    <p class="control">
-                      <input v-model="name" class="input" type="text" placeholder=" name">
-                    </p>
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">name</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input v-model="name" class="input" type="text" placeholder=" name">
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">gender</label>
-                </div>
-                <div class="field-body">
-                  <div class="select">
-                    <select v-model="gender">
-                      <option selected>Select gender</option>
-                      <option>Male</option>
-                      <option>Female</option>
-                  </select>
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">gender</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="select">
+                      <select v-model="gender">
+                        <option selected>Select gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">Email</label>
-                </div>
-                <div class="field-body">
-                  <div class="field">
-                    <p class="control">
-                      <input v-model="email" class="input" type="email" placeholder=" email">
-                    </p>
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">Email</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input v-model="email" class="input" type="email" placeholder=" email">
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">Occupation</label>
-                </div>
-                <div class="field-body">
-                  <div class="select">
-                    <select v-model="occupation">
-                      <option>Select Occupation</option>
-                      <option>Businessperson</option>
-                      <option>Student</option>
-                      <option>Police</option>
-                      <option>Soldier</option>
-                      <option>CEO</option>
-                      <option>CFO</option>
-                      <option>Developer</option>
-                      <option>Tradesman</option>
-                      <option>Doctor</option>
-                      <option>Lecturer</option>
-                      <option>Instructor</option>
-                      <option>Security</option>
-                      <option>Driver</option>
-                      <option>Chef</option>
-                      <option>Waitress</option>
-                      <option>Presenter</option>
-                      <option>Other</option>
-                  </select>
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">Occupation</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="select">
+                      <select v-model="occupation">
+                        <option>Select Occupation</option>
+                        <option>Businessperson</option>
+                        <option>Student</option>
+                        <option>Police</option>
+                        <option>Soldier</option>
+                        <option>CEO</option>
+                        <option>CFO</option>
+                        <option>Developer</option>
+                        <option>Tradesman</option>
+                        <option>Doctor</option>
+                        <option>Lecturer</option>
+                        <option>Instructor</option>
+                        <option>Security</option>
+                        <option>Driver</option>
+                        <option>Chef</option>
+                        <option>Waitress</option>
+                        <option>Presenter</option>
+                        <option>Other</option>
+                    </select>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">Phone</label>
-                </div>
-                <div class="field-body">
-                  <div class="field">
-                    <p class="control">
-                      <input v-model="phonenumber" class="input" type="text" placeholder="phone ">
-                    </p>
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">Phone</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input v-model="phonenumber" class="input" type="text" placeholder="phone ">
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">Birthyear</label>
-                </div>
-                <div class="field-body">
-                  <div class="field">
-                    <p class="control">
-                      <input v-model="birthyear" class="input" type="text" placeholder="birth year">
-                    </p>
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">Birthyear</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input v-model="birthyear" class="input" type="text" placeholder="birth year">
+                      </p>
+                    </div>
                   </div>
                 </div>
+                <div class="field is-grouped">
+                  <a class="button is-primary" @click="addCustomer">Save data</a>
+                </div>
               </div>
-              <div class="field is-grouped">
-                <a class="button is-primary" @click="addCustomer">Save data</a>
-              </div>
-            </div>
-          </article>
-        </div>
+            </article>
+          </div>
 
 
 
@@ -135,7 +135,7 @@
                     <td>{{ customer.phoneNumber }}</td>
                     <td>{{ customer.birthYear }}</td>
                     <td>{{ customer.occupation }}</td>
-                    <td> <span class="button">edit</span> <span class="button">delete</span></td>
+                    <td> <span class="button"><router-link :to='`/detailCustomer/${customer.id}`'>edit</router-link></span> <span class="button" @click='removeCustomer(customer.id)'>delete</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -176,7 +176,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'inputCustomer', 'getCustomers'
+      'inputCustomer', 'getCustomers', 'deleteCustomer'
     ]),
     addCustomer() {
       const uid = localStorage.getItem('uid');
@@ -191,6 +191,10 @@ export default {
         restaurantId: uid,
       }
       this.inputCustomer(newCustomer)
+    },
+    removeCustomer(id) {
+      // console.log("di customer remove", id)
+      this.deleteCustomer(id)
     }
   },
 };

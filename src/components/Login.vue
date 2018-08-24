@@ -1,30 +1,30 @@
 <template>
-<div class="login">
-  <section class="hero is-info is-large">
-    <div class="hero-head">
-      <nav class="navbar">
-        <div class="container">
-          <div class="navbar-brand">
-            <a class="navbar-item">
-            </a>
-            <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-            <span></span>
-            </span>
+  <div class="login">
+    <section class="hero is-info is-large">
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+              </a>
+              <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+              <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroB" class="navbar-menu">
+            
+            </div>
           </div>
-          <div id="navbarMenuHeroB" class="navbar-menu">
-
-          </div>
-        </div>
-      </nav>
-    </div>
-
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <div id="firebaseui-auth-container"></div>
+        </nav>
       </div>
-    </div>
-  </section>
-</div>
+  
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div id="firebaseui-auth-container"></div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
