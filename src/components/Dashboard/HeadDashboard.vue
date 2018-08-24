@@ -1,17 +1,16 @@
 <template>
   <div class="headdashboard">
-    <section class="hero is-info welcome is-small">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            Hello, {{ this.name }}
-          </h1>
-          <h2 class="subtitle">
-            I hope you are having a great day!
-          </h2>
+    <div class="container">
+      <section class="hero is-info welcome is-small custom">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Hello, {{ this.name }}
+            </h1>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -26,5 +25,7 @@ export default {
 </script>
 
 <style>
-
+  .custom {
+    background: linear-gradient(to right, #5B86E5, #36D1DC)
+  }
 </style>

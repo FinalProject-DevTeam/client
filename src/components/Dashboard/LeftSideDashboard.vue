@@ -3,6 +3,7 @@
     <div class="columns">
       <div class="column is-4">
         <CardLeftDashboard :name="nameC" :link="linkC" :data="this.sampleCustomers" />
+        <br>
         <CardLeftDashboard :name="nameT" :link="linkT" :data="this.sampleTransactions" />
       </div>
     </div>
@@ -12,7 +13,6 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import CardLeftDashboard from './CardLeftDashboard.vue';
-import { functions } from 'firebase';
 
 export default {
   data: function() {
