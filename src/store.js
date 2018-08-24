@@ -31,9 +31,6 @@ export default new Vuex.Store({
     singleTransactionData(state, payload){
       state.singleTransaction = payload
     },
-    addCustomerData (state, payload) {
-      state.customers = payload
-    }
   },
   actions: {
     inputCustomer({ commit }, payload) {
@@ -58,7 +55,7 @@ export default new Vuex.Store({
         })
     },
 
-    addTransaction({ commit }, payload) {
+    inputTransaction({ commit }, payload) {
       axios.post(`http://localhost:3000/transaction`, payload)
 
         .then(result => {
@@ -67,7 +64,7 @@ export default new Vuex.Store({
             `${result.data.msg}`,
             'success'
           )
-          router.push('/dashboard');
+          router.push('/transaction');
         })
 
         .catch(err => {
@@ -111,7 +108,7 @@ export default new Vuex.Store({
             `successfully removed`,
             'success'
           )
-          router.push('/dashboard');
+          router.push('/transaction');
         })
 
         .catch(err => {

@@ -121,7 +121,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getCustomers', 'getTransactions', 'addTransaction', 'deleteTransaction'
+      'getCustomers', 'getTransactions', 'inputTransaction', 'deleteTransaction'
     ]),
     addTransactions() {
       const uid = localStorage.getItem('uid');
@@ -129,17 +129,14 @@ export default {
         itemsOrdered: this.menus,
         restaurantId: uid,
         customerId: this.id
-
       }
-      this.addTransaction(newTransaction)
+      this.inputTransaction(newTransaction)
+      this.getTransactions()
     },
     removeTransaction(id) {
       this.deleteTransaction(id)
-      console.log('successfully removed')
+      this.getTransactions()
     },
-    editTransaction(id) {
-      this.updateTransaction(id)
-    }
   },
 };
 </script>
