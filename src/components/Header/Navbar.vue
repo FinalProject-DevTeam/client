@@ -17,16 +17,24 @@
           <div id="navbarMenuHeroB" class="navbar-menu">
             <div class="navbar-end">
               <a class="navbar-item is-active">
-                Home
+                <router-link to='/dashboard'>
+                  Home
+                </router-link>
               </a>
-              <a href="/customer" class="navbar-item">
-                Customer
+              <a class="navbar-item">
+                <router-link to='/customer'>
+                  Customer
+                </router-link>
               </a>
-              <a href="/transaction" class="navbar-item">
-                Transaction
+              <a class="navbar-item">
+                <router-link to='/transaction'>
+                  Transaction
+                </router-link>
               </a>
-              <a href="/promo" class="navbar-item">
-                Promo
+              <a class="navbar-item">
+                <router-link to='/promo'>
+                  Promo
+                </router-link>
               </a>
               <a class="navbar-item" @click="setLogOut">
                 Logout

@@ -23,6 +23,7 @@ new Vue({
       if(user) {
         localStorage.setItem('isLogin', true);
         localStorage.setItem('uid', user.uid);
+        localStorage.setItem('name', user.displayName);
         // console.log(user)
       } else {
         localStorage.clear();
