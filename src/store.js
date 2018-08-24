@@ -54,6 +54,29 @@ export default new Vuex.Store({
           )
         })
     },
+    sendEmailPromo({ commit }, payload) {
+      console.log('entering email store.js')
+      axios.post(`http://localhost:3000/emailpromo`, payload)
+
+        .then(result => {
+          console.log('masuk')
+          swal(
+            'Good Job',
+            `sucess send Email`,
+            'success'
+          )
+          router.push('/promo');
+        })
+
+        .catch(err => {
+          console.log(err)
+          swal(
+            'Failed!',
+            `Failed to send email`,
+            'error'
+          )
+        })
+    },
 
     inputTransaction({ commit }, payload) {
       axios.post(`http://localhost:3000/transaction`, payload)

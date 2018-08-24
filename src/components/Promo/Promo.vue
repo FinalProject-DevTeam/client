@@ -35,27 +35,30 @@
     </div>
     <div class="tile is-parent is-10">
       <article class="tile is-child box">
-        {{subject}} {{sender}}
-        <div v-html="myHTML"></div>
-        {{myHTML}}
+
+        <div v-html="content"></div>
+        <!-- {{content}} -->
         <p class="title">Send email Promo</p>
         <div class="content">
           <section>
             <b-field horizontal label="Subject" message="Please enter a subject">
               <b-input v-model="subject" name="subject" expanded></b-input>
             </b-field>
+            <b-field horizontal label="Receiver" message="Please enter a receiver">
+              <b-input v-model="receiver" name="receiver" expanded></b-input>
+            </b-field>
 
             <b-field horizontal label="From">
-              <b-input v-model="sender" name="email" type="email" placeholder="nobody@myCRM.com" expanded></b-input>
+              <b-input v-model="owneremail" name="email" type="email" placeholder="nobody@myCRM.com" expanded></b-input>
             </b-field>
             <b-field horizontal label="Message">
-              <wysiwyg v-model="myHTML" />
+              <wysiwyg v-model="content" />
             </b-field>
 
             <b-field horizontal>
               <!-- Label left empty for spacing -->
               <p class="control">
-                <button class="button is-primary">
+                <button @click="sendEmail" class="button is-primary">
                   Blast Email
                 </button>
               </p>
@@ -70,15 +73,44 @@
 </template>
 
 <script>
+import {
+  mapState,
+  mapActions
+} from 'vuex';
+
+
 export default {
   name: 'promo',
   data: function() {
     return {
-      datas: 'ini data',
+      receiver: '',
+      owneremail: '',
       subject: '',
-      sender: '',
+      content: '',
+      datas: 'ini data',
       myHTML: ''
+    }
+  },
+  methods: {
+    ...mapActions([
+      'sendEmailPromo'
 
+    ]),
+
+    sendEmail() {
+      const msg = {
+        receiver: this.receiver,
+        owneremail: this.owneremail,
+        subject: this.subject,
+        content: this.content
+      };
+
+      console.log('ini msg', msg)
+      this.sendEmailPromo(msg)
+      this.receiver = '';
+      this.owneremail = '';
+      this.subject = '';
+      this.content = '';
     }
   }
 }
