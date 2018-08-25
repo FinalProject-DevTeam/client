@@ -157,6 +157,8 @@ export default {
       }
       this.inputTransaction(newTransaction)
       this.getTransactions()
+      this.menus = [];
+
     },
     removeTransaction(id) {
       this.deleteTransaction(id)
