@@ -19,16 +19,16 @@
             <span class="button is-medium is-info" @click="getModelStatus()">Get Status ML Model</span>
           </div>
           <div class="buttons">
-            <span class="button is-medium is-success">Create Evaluation</span>
-            <span class="button is-medium is-info">Get Status Evaluation</span>
+            <span class="button is-medium is-success" @click="createEvaluation()">Create Evaluation</span>
+            <span class="button is-medium is-info" @click="getEvaluationStatus()">Get Status Evaluation</span>
           </div>
           <div class="buttons">
-            <span class="button is-medium is-success">Create Prediction</span>
-            <span class="button is-medium is-info">Get Status Prediction</span>
+            <span class="button is-medium is-success" @click="createNewBatchPrediction()">Create Prediction</span>
+            <span class="button is-medium is-info" @click="getPredictionStatus()">Get Status Prediction</span>
           </div>
 
           <div class="buttons">
-            <span class="button is-medium is-success">Get Prediction</span>
+            <span class="button is-medium is-success" @click="getPrediction()">Get Prediction</span>
           </div>
           <div class="buttons">
             <span class="button is-medium is-success" @click="deleteDataSource()">Delete data Source</span>
@@ -185,16 +185,39 @@ export default {
         axios.delete(`http://localhost:3000/aws/datasource/${id}`);
       }
     },
-    createMLModel() {
-      axios.post(`http://localhost:3000/aws/model`)
+    async createMLModel() {
+      let { data } = await axios.post(`http://localhost:3000/aws/model`)
+      console.log(data);
     },
-    getModelStatus() {
+    async getModelStatus() {
       let date = new Date();
       let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
-      axios.get(`http://localhost:3000/aws/model/${today}`)
+      let { data } = await axios.get(`http://localhost:3000/aws/model/${today}`)
+      console.log(data);
     },
-    deleteModel() {
-
+    async createEvaluation() {
+      let { data } = await axios.post(`http://localhost:3000/aws/evaluation`)
+    },
+    async getEvaluationStatus() {
+      let date = new Date();
+      let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
+      let { data } = await axios.get(`http://localhost:3000/aws/evaluation/${today}`)
+      console.log(data);
+    },
+    async createNewBatchPrediction() {
+      let id = localStorage.getItem('uid')
+      let { data } = await axios.post(`http://localhost:3000/aws/prediction/${id}`)
+      console.log(data);
+    },
+    async getPredictionStatus() {
+      let id = localStorage.getItem('uid')
+      let { data } = await axios.get(`http://localhost:3000/aws/predictionstatus/${id}`)
+      console.log(data);
+    },
+    async getPrediction() {
+      let id = localStorage.getItem('uid')
+      let { data } = await axios.get(`http://localhost:3000/aws/prediction/${id}`)
+      console.log(data);
     }
   }
 };
