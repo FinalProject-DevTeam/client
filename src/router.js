@@ -6,6 +6,7 @@ import Transaction from './views/TransactionPage.vue';
 import Promo from './views/PromoPage.vue';
 import DetailCustomer from './views/DetailCustomer.vue'
 import TransactionUpdate from './views/UpdateTransactionPage.vue'
+import Learn from './views/Learn.vue'
 
 
 Vue.use(Router)
@@ -23,6 +24,11 @@ export default new Router({
       path: '/customer',
       name: 'customer',
       component: Customer
+    },
+    {
+      path: '/learn',
+      name: 'learn',
+      component: Learn
     },
     {
       path: '/transaction/:id',
