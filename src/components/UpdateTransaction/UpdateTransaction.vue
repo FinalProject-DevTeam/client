@@ -1,54 +1,101 @@
 <template>
-  <div class="update">
+<div class="update">
 
-    <div class="tile is-ancestor">
-      <div class="tile is-parent is-9">
-        <article class="tile is-child box">
-          <p class="title">Update Transaction</p>
-          <div class="content">
-            <section>
-              <b-field horizontal label="Menus:">
-                <section>
-                  <hr color="#eee">
-                  <p class="content">
-                  </p>
-                  <div class="block">
-                    <b-checkbox native-value="Nasi Goreng" v-model="editNew.itemsOrdered">
-                      Nasi Goreng
-                    </b-checkbox>
-                    <b-checkbox native-value="Ayam Goreng" v-model="editNew.itemsOrdered">
-                      Ayam Goreng
-                    </b-checkbox>
-                    <b-checkbox native-value="Udang Goreng" v-model="editNew.itemsOrdered">
-                      Udang Goreng
-                    </b-checkbox>
-                    <b-checkbox native-value="Salmon Goreng" v-model="editNew.itemsOrdered">
-                      Salmon Goreng
-                    </b-checkbox>
-                    <b-checkbox native-value="Pisang Goreng" v-model="editNew.itemsOrdered">
-                      Pisang Goreng
-                    </b-checkbox>
-                    <b-checkbox native-value="Kentang Goreng" v-model="editNew.itemsOrdered">
-                      Kentang Goreng
-                    </b-checkbox>
-                    <b-checkbox native-value="Pizza" v-model="editNew.itemsOrdered">
-                      Pizza
-                    </b-checkbox>
-                    <b-checkbox native-value="Sate" v-model="editNew.itemsOrdered">
-                      Sate
-                    </b-checkbox>
+  <div class="tile is-ancestor">
+    <div class="tile is-parent is-9">
+      <article class="tile is-child box">
+        <p class="title">Update Transaction</p>
+        <div class="content">
+          <section>
+            <b-field horizontal label="Menus:">
+              <section>
+                <hr color="#eee">
+                <p class="content">
+                </p>
+                <div class="columns">
+                  <div class="column is-3">
+                    <div class="field">
+                      <b-checkbox native-value="Nasi Goreng" v-model="editNew.itemsOrdered">
+                        Nasi Goreng
+                      </b-checkbox>
+                    </div>
+                    <div class="field">
+                      <b-checkbox native-value="Ayam Goreng" v-model="editNew.itemsOrdered">
+                        Ayam Goreng
+                      </b-checkbox>
+                    </div>
+                    <div class="field">
+                      <b-checkbox native-value="Udang Goreng" v-model="editNew.itemsOrdered">
+                        Udang Goreng
+                      </b-checkbox>
+                    </div>
+                    <div class="field">
+                      <b-checkbox native-value="Salmon Goreng" v-model="editNew.itemsOrdered">
+                        Salmon Goreng
+                      </b-checkbox>
+                    </div>
                   </div>
-                  <p class="content">
-                    <a class="button is-success" @click="editTransaction()">Update Menu</a>
-                  </p>
-                </section>
-              </b-field>
-            </section>
-          </div>
-        </article>
-      </div>
+                  <div class="column is-3">
+                    <div class="field">
+                      <b-checkbox native-value="Pisang Goreng" v-model="editNew.itemsOrdered">
+                        Pisang Goreng
+                      </b-checkbox>
+                    </div>
+                    <div class="field">
+                      <b-checkbox native-value="Kentang Goreng" v-model="editNew.itemsOrdered">
+                        Kentang Goreng
+                      </b-checkbox>
+                    </div>
+                    <div class="field">
+                      <b-checkbox native-value="Pizza" v-model="editNew.itemsOrdered">
+                        Pizza
+                      </b-checkbox>
+                    </div>
+                    <div class="field">
+                      <b-checkbox native-value="Sate" v-model="editNew.itemsOrdered">
+                        Sate
+                      </b-checkbox>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- <div class="block">
+                  <b-checkbox native-value="Nasi Goreng" v-model="editNew.itemsOrdered">
+                    Nasi Goreng
+                  </b-checkbox>
+                  <b-checkbox native-value="Ayam Goreng" v-model="editNew.itemsOrdered">
+                    Ayam Goreng
+                  </b-checkbox>
+                  <b-checkbox native-value="Udang Goreng" v-model="editNew.itemsOrdered">
+                    Udang Goreng
+                  </b-checkbox>
+                  <b-checkbox native-value="Salmon Goreng" v-model="editNew.itemsOrdered">
+                    Salmon Goreng
+                  </b-checkbox>
+                  <b-checkbox native-value="Pisang Goreng" v-model="editNew.itemsOrdered">
+                    Pisang Goreng
+                  </b-checkbox>
+                  <b-checkbox native-value="Kentang Goreng" v-model="editNew.itemsOrdered">
+                    Kentang Goreng
+                  </b-checkbox>
+                  <b-checkbox native-value="Pizza" v-model="editNew.itemsOrdered">
+                    Pizza
+                  </b-checkbox>
+                  <b-checkbox native-value="Sate" v-model="editNew.itemsOrdered">
+                    Sate
+                  </b-checkbox>
+                </div> -->
+                <p class="content">
+                  <a class="button is-success" @click="editTransaction()">Update Menu</a>
+                </p>
+              </section>
+            </b-field>
+          </section>
+        </div>
+      </article>
     </div>
   </div>
+</div>
 </template>
 
 <script>

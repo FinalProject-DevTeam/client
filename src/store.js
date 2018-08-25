@@ -15,7 +15,10 @@ export default new Vuex.Store({
     singleCustomer:null,
     singleTransaction:null,
     sampleCustomers: null,
-    sampleTransactions: null
+    sampleTransactions: null,
+    isLogin:null,
+    uid:null,
+    name:'namecova'
   },
   mutations: {
     customersData (state, payload) {
@@ -38,7 +41,17 @@ export default new Vuex.Store({
     },
     sTransactions(state, payload) {
       state.sampleTransactions = payload;
-    }
+    },
+    isLoginMutation(state, payload) {
+      state.isLogin = payload;
+    },
+    uidMutation(state, payload) {
+      state.uid = payload;
+    },
+    nameMutation(state, payload) {
+      state.name = payload;
+    },
+
 
   },
   actions: {
@@ -161,16 +174,14 @@ export default new Vuex.Store({
         }
       })
         .then(result => {
-          let sampleCustomers = [];
-
-          for(let i = 0; i < 4; i++) {
-            sampleCustomers.push(result.data.data[i])
-          }
-
+          // let sampleCustomers = [];
+          // console.log(this.state.uid)
+          // for(let i = 0; i < 4; i++) {
+          //   sampleCustomers.push(result.data.data[i])
+          // }
           commit('customersData', result.data.data)
-          commit('sCustomers', sampleCustomers)
+          commit('sCustomers', result.data.data.slice(0,4))
         })
-
         .catch(err => {
           swal(
             'Failed',
@@ -184,7 +195,6 @@ export default new Vuex.Store({
         .then(result => {
           commit('singleCustomerData', result.data.data)
         })
-
         .catch(err => {
           swal(
             'Failed',
@@ -199,7 +209,6 @@ export default new Vuex.Store({
         .then(result => {
           commit('singleTransactionData', result.data.data)
         })
-
         .catch(err => {
           swal(
             'Failed',
@@ -212,7 +221,6 @@ export default new Vuex.Store({
 
     getTransactions({ commit }) {
       const restaurantId = localStorage.getItem('uid')
-
       axios.get(`http://localhost:3000/transaction`, {
         headers: {
           uid: restaurantId
@@ -220,14 +228,13 @@ export default new Vuex.Store({
       })
 
         .then(result => {
-          let sampleTransactions = [];
-
-          for(let i = 0; i < 4; i++) {
-            sampleTransactions.push(result.data.data[i])
-          }
-
+          // let sampleTransactions = [];
+          //
+          // for(let i = 0; i < 4; i++) {
+          //   sampleTransactions.push(result.data.data[i])
+          // }
           commit('transactionData', result.data.data)
-          commit('sTransactions', sampleTransactions)
+          commit('sTransactions', result.data.data.slice(0,4))
         })
 
         .catch(err => {
