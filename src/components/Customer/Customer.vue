@@ -1,60 +1,59 @@
 <template>
-  <div class="customercomponent">
-    <div class="s">
-      <div class="notification">
-        <div class="tile is-ancestor">
-          <div class="tile is-parent">
-            <article class="tile is-child box">
-              <p class="title">Add Customer Data</p>
-              <hr>
-              <div class="content">
-                <div class="field is-horizontal">
+<div class="customercomponent">
+  <div class="s">
+    <div class="notification">
+      <div class="tile is-ancestor">
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">Add Customer Data</p>
+            <hr>
+            <div class="content">
+
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Name</label>
                 </div>
-                <div class="field is-horizontal">
-                  <div class="field-label is-normal">
-                    <label class="label">Name</label>
-                  </div>
-                  <div class="field-body">
-                    <div class="field">
-                      <p class="control">
-                        <input v-model="name" class="input" type="text" placeholder="Enter Name">
-                      </p>
-                    </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input v-model="name" class="input" type="text" placeholder="Enter Name">
+                    </p>
                   </div>
                 </div>
-                <div class="field is-horizontal">
-                  <div class="field-label is-normal">
-                    <label class="label">Gender</label>
-                  </div>
-                  <div class="field-body">
-                    <div class="select">
-                      <select v-model="gender">
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Gender</label>
+                </div>
+                <div class="field-body">
+                  <div class="select">
+                    <select v-model="gender">
                         <option selected>Select Gender</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
-                    </div>
                   </div>
                 </div>
-                <div class="field is-horizontal">
-                  <div class="field-label is-normal">
-                    <label class="label">Email</label>
-                  </div>
-                  <div class="field-body">
-                    <div class="field">
-                      <p class="control">
-                        <input v-model="email" class="input" type="email" placeholder="Enter email">
-                      </p>
-                    </div>
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Email</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input v-model="email" class="input" type="email" placeholder="Enter email">
+                    </p>
                   </div>
                 </div>
-                <div class="field is-horizontal">
-                  <div class="field-label is-normal">
-                    <label class="label">Occupation</label>
-                  </div>
-                  <div class="field-body">
-                    <div class="select">
-                      <select v-model="occupation">
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Occupation</label>
+                </div>
+                <div class="field-body">
+                  <div class="select">
+                    <select v-model="occupation">
                         <option>Select Occupation</option>
                         <option>Businessperson</option>
                         <option>Student</option>
@@ -74,43 +73,43 @@
                         <option>Presenter</option>
                         <option>Other</option>
                     </select>
-                    </div>
                   </div>
-                </div>
-                <div class="field is-horizontal">
-                  <div class="field-label is-normal">
-                    <label class="label">Phone</label>
-                  </div>
-                  <div class="field-body">
-                    <div class="field">
-                      <p class="control">
-                        <input v-model="phonenumber" class="input" type="text" placeholder="Enter Phone Number ">
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="field is-horizontal">
-                  <div class="field-label is-normal">
-                    <label class="label">Birth Year</label>
-                  </div>
-                  <div class="field-body">
-                    <div class="field">
-                      <p class="control">
-                        <input v-model="birthyear" class="input" type="test" placeholder="Birth Year">
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="field is-grouped">
-                  <a class="button is-primary" @click="addCustomer">Save data</a>
                 </div>
               </div>
-            </article>
-          </div>
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Phone</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input v-model="phonenumber" class="input" type="text" placeholder="Enter Phone Number ">
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Birth Year</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input v-model="birthyear" class="input" type="test" placeholder="Birth Year">
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-grouped">
+                <a class="button is-info is-medium" @click="addCustomer">Save data</a>
+              </div>
+            </div>
+          </article>
+        </div>
 
 
 
-        <div class="tile is-parent is-8">
+        <div class="tile is-parent is-9">
           <article class="tile is-child box">
             <p class="title">List Customers</p>
             <hr>
@@ -127,7 +126,7 @@
                     <th><abbr title="Goals against">Action </abbr></th>
                   </tr>
                 </thead>
-              
+
                 <tbody>
                   <tr v-for="(customer, index) in customers" :key="index">
                     <td>{{ customer.name }}</td>
@@ -136,7 +135,12 @@
                     <td>{{ customer.phoneNumber }}</td>
                     <td>{{ customer.birthYear }}</td>
                     <td>{{ customer.occupation }}</td>
-                    <td> <span class="button"><router-link :to='`/detailCustomer/${customer.id}`'>Update</router-link></span> <span class="button" @click='removeCustomer(customer.id)'>Delete</span></td>
+                    <td>
+                      <div class="buttons has-addons">
+                        <span class="button is-success is-selected"><router-link :to='`/detailCustomer/${customer.id}`'>Update</router-link></span>
+                        <span class="button is-danger" @click='removeCustomer(customer.id)'>Delete</span>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -145,12 +149,15 @@
         </div>
       </div>
     </div>
-    </div>
   </div>
+</div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import {
+  mapState,
+  mapActions
+} from 'vuex';
 
 export default {
   name: "customerpage",
@@ -204,6 +211,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.notification .title,
+.notification .subtitle,
+.notification .content {
+  color: #808080 !important;
+}
+
 h3 {
   margin: 40px 0 0;
 }

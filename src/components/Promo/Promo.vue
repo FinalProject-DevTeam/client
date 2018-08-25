@@ -1,7 +1,7 @@
 <template>
-  <div class="promo">
-    <div class="container">
-      <div class="tile is-ancestor">
+<div class="promo">
+  <div class="container">
+    <div class="tile is-ancestor">
       <div class="tile is-parent is-12">
         <article class="tile is-child box">
           <p class="title">Send Email Promo</p>
@@ -22,8 +22,9 @@
               <b-field horizontal>
                 <!-- Label left empty for spacing -->
                 <p class="control">
-                  <button @click="sendEmail" class="button is-primary">
-                    Blast Email
+
+                  <button @click="sendEmail" class="button is-success is-medium"> <i class="fas fa-check"></i>
+                     Blast Email
                   </button>
                 </p>
               </b-field>
@@ -32,8 +33,8 @@
         </article>
       </div>
     </div>
-    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -83,6 +84,11 @@ export default {
 
 <style scoped>
 @import "~vue-wysiwyg/dist/vueWysiwyg.css";
+.promo .tile {
+  border-radius: 30px;
+  box-shadow: 3px 3px 5px 0px #ccc;
+  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
 
 h3 {
   margin: 40px 0 0;
