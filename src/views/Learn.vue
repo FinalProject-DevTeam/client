@@ -16,7 +16,7 @@
           </div>
           <div class="buttons">
             <span class="button is-medium is-success" @click="createMLModel()">Create ML Model</span>
-            <span class="button is-medium is-info">Get Status ML Model</span>
+            <span class="button is-medium is-info" @click="getModelStatus()">Get Status ML Model</span>
           </div>
           <div class="buttons">
             <span class="button is-medium is-success">Create Evaluation</span>
@@ -31,10 +31,10 @@
             <span class="button is-medium is-success">Get Prediction</span>
           </div>
           <div class="buttons">
-            <span class="button is-medium is-success">Delete data Source</span>
+            <span class="button is-medium is-success" @click="deleteDataSource()">Delete data Source</span>
           </div>
           <div class="buttons">
-            <span class="button is-medium is-success">Delete ML Model</span>
+            <span class="button is-medium is-success" @click="deleteModel()">Delete ML Model</span>
           </div>
           <div class="buttons">
             <span class="button is-medium is-success">Delete Prediction</span>
@@ -85,19 +85,17 @@ export default {
   },
   methods: {
     async uploadToS3() {
-      let payload;
-      let columns;
-      let id;
-      let folderName;
+      let date = new Date();
+      let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
       if (this.dataName === 'customers-data') {
-        id = localStorage.getItem('uid');
+        let id = localStorage.getItem('uid');
         let customersData = await axios.get('http://localhost:3000/customer', {
             headers: {
               uid: id,
             }
           })
-        folderName = 'customersData';
-        columns = {
+        let folderName = 'customersData';
+        let columns = {
       	  gender: "gender",
       		birthYear: "birthyear",
       		occupation: "occupation",
@@ -105,7 +103,33 @@ export default {
         let arrData = customersData.data.data.map((datum) => {
           return [ datum.genderML , Number(datum.birthYear), datum.occupationML ];
         })
-        payload = {
+        let payload = {
+          arrData: arrData,
+          dataName: this.dataName,
+          folderName: folderName,
+          columns: columns,
+          id: id,
+        }
+        let { data } = await axios.post('http://localhost:3000/aws/s3', payload)
+        // console.log(data);
+      } else {
+        let id = today
+        let folderName = 'transactionsData';
+        let columns = {
+          gender: "gender",
+          birthYear: "birthyear",
+          occupation: "occupation",
+          ordered_item: "ordered_item",
+        }
+        let transactionsData = await axios.get('http://localhost:3000/populate')
+        let arrData = [];
+        transactionsData.data.map((datum) => {
+          return datum.itemsOrderedML.map((item) => {
+            return arrData.push([datum.customer.genderML, +(datum.customer.birthYear), datum.customer.occupationML, item]);
+          })
+        })
+        // console.log(arrData);
+        let payload = {
           arrData: arrData,
           dataName: this.dataName,
           folderName: folderName,
@@ -114,8 +138,6 @@ export default {
         }
         let { data } = await axios.post('http://localhost:3000/aws/s3', payload)
         console.log(data);
-      } else {
-
       }
     },
     createDataSource() {
@@ -149,7 +171,25 @@ export default {
       }
       axios.get(`http://localhost:3000/aws/datasource/${id}`)
     },
+    deleteDataSource() {
+      if (this.datasourceId === 'restaurantId') {
+        let id = localStorage.getItem('uid')
+      } else {
+        let date = new Date();
+        let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
+        let id = today;
+      }
+      axios.delete(`http://localhost:3000/aws/datasource/${id}`);
+    },
     createMLModel() {
+      axios.post(`http://localhost:3000/aws/model`)
+    },
+    getModelStatus() {
+      let date = new Date();
+      let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
+      axios.get(`http://localhost:3000/aws/model/${today}`)
+    },
+    deleteModel() {
 
     }
   }
