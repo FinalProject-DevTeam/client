@@ -111,7 +111,7 @@ export default {
           id: id,
         }
         let { data } = await axios.post('http://localhost:3000/aws/s3', payload)
-        // console.log(data);
+        console.log(data);
       } else {
         let id = today
         let folderName = 'transactionsData';
@@ -140,7 +140,7 @@ export default {
         console.log(data);
       }
     },
-    createDataSource() {
+    async createDataSource() {
       let id;
       let payload;
       if (this.datasourceId === 'restaurantId') {
@@ -153,33 +153,37 @@ export default {
       } else {
         id = '';
         payload = {
-          dataName: 'customers-data',
-          folderName: 'customersData',
+          dataName: 'transactions-data',
+          folderName: 'transactionsData',
           id: id,
         }
       }
-      axios.post(`localhost:3000/aws/datasource`, payload)
+      let { data } = await axios.post(`http://localhost:3000/aws/datasource`, payload)
+      console.log(data);
     },
-    getDataSourceStatus() {
-      let id;
+    async getDataSourceStatus() {
       let date = new Date();
       let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
       if (this.datasourceId === 'restaurantId') {
-        id = localStorage.getItem('uid')
+        let id = `${localStorage.getItem('uid')}-${today}`
+        let { data } = await axios.get(`http://localhost:3000/aws/datasource/${id}`)
+        console.log(data);
       } else {
-        id = today
+        let id = today
+        let { data } = await axios.get(`http://localhost:3000/aws/datasource/${id}`)
+        console.log(data);
       }
-      axios.get(`http://localhost:3000/aws/datasource/${id}`)
     },
     deleteDataSource() {
       if (this.datasourceId === 'restaurantId') {
         let id = localStorage.getItem('uid')
+        axios.delete(`http://localhost:3000/aws/datasource/${id}`);
       } else {
         let date = new Date();
         let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
         let id = today;
+        axios.delete(`http://localhost:3000/aws/datasource/${id}`);
       }
-      axios.delete(`http://localhost:3000/aws/datasource/${id}`);
     },
     createMLModel() {
       axios.post(`http://localhost:3000/aws/model`)
