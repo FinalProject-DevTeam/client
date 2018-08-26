@@ -3,10 +3,11 @@ import Router from 'vue-router';
 import Login from './views/Login.vue';
 import Customer from './views/CustomerPage.vue';
 import Transaction from './views/TransactionPage.vue';
-import Promo from './views/PromoPage.vue';
+import EmailPromo from './views/PromoPage.vue';
 import DetailCustomer from './views/DetailCustomer.vue'
 import TransactionUpdate from './views/UpdateTransactionPage.vue'
 import Learn from './views/Learn.vue'
+import SmsPromo from './views/PromoSms.vue'
 
 
 Vue.use(Router)
@@ -36,9 +37,14 @@ export default new Router({
       component: TransactionUpdate
     },
     {
-      path: '/promo',
-      name: 'promo',
-      component: Promo
+      path: '/emailpromo',
+      name: 'emailpromo',
+      component: EmailPromo
+    },
+    {
+      path: '/smspromo',
+      name: 'smspromo',
+      component: SmsPromo
     },
     {
       path: '/transaction',

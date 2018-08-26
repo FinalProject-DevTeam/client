@@ -1,16 +1,14 @@
 <template>
-<div class="promo">
+<div class="smspromo">
   <div class="container">
     <div class="tile is-ancestor">
       <div class="tile is-parent is-12">
         <article class="tile is-child box">
-          <p class="title">Send Email Promo</p>
+          <p class="title">Send SMS Promo</p>
           <div class="content">
             <section>
-              <b-field horizontal label="Subject" message="Please enter a subject">
-                <b-input v-model="subject" name="subject" expanded></b-input>
-              </b-field>
-              <b-field horizontal label="Food Promo">
+
+              <b-field horizontal label="Food Promo:">
                 <b-select placeholder="FOOD" v-model='foodselected'>
                   <option value="Nasi+Goreng">Nasi Goreng</option>
                   <option value="Ayam+Goreng">Ayam Goreng</option>
@@ -23,7 +21,7 @@
                 </b-select>
               </b-field>
 
-              <b-field horizontal label="Message">
+              <b-field horizontal label="SMS Body:">
                 <wysiwyg v-model="content" />
               </b-field>
               <b-field horizontal>
@@ -31,7 +29,7 @@
                 <p class="control">
 
                   <button @click="sendEmail" class="button is-success is-medium"> <i class="fas fa-check"></i>
-                    Blast Email
+                    Blast SMS to Customer
                   </button>
                 </p>
               </b-field>
@@ -50,13 +48,10 @@ import {
 } from 'vuex';
 
 export default {
-  name: 'promo',
+  name: 'smspromo',
   data: function() {
     return {
-      subject: '',
       content: '',
-      datas: 'ini data',
-      myHTML: '',
       foodselected: 'Food Promo',
     };
   },
