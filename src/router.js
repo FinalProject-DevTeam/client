@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import Login from './views/Login.vue';
 import Customer from './views/CustomerPage.vue';
 import Transaction from './views/TransactionPage.vue';
-import EmailPromo from './views/PromoPage.vue';
+import EmailPromo from './views/PromoEmail.vue';
 import DetailCustomer from './views/DetailCustomer.vue'
 import TransactionUpdate from './views/UpdateTransactionPage.vue'
 import Learn from './views/Learn.vue'

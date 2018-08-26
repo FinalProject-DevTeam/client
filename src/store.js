@@ -86,6 +86,7 @@ export default new Vuex.Store({
         }
       })
 
+
       if (data.data.length === 0) {
         swal(
           'Sorry!',
@@ -130,7 +131,6 @@ export default new Vuex.Store({
       })
 
       let receiver = data.data
-
       if (data.data.length === 0) {
         swal(
           'Sorry!',
