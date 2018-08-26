@@ -218,6 +218,28 @@ export default {
       let id = localStorage.getItem('uid')
       let { data } = await axios.get(`http://localhost:3000/aws/prediction/${id}`)
       console.log(data);
+
+      
+      let resultArr = [];
+
+      for(let i = 1; i < data.length; i++) {
+        let index = 0;
+        let maxNumber = 0;
+        let food = '';
+        for(let j = 0; j < data[i].length; j++) {
+          if(data[i][j] > maxNumber) {
+            maxNumber = data[i][j];
+            index = j;
+            food = data[0][j]
+          }
+        }
+        let result = {
+          point: maxNumber,
+          foodfav: food
+        }
+        resultArr.push(result)
+      }
+      console.log(resultArr)
     }
   }
 };

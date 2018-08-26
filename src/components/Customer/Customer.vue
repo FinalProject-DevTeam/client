@@ -186,6 +186,10 @@ export default {
     ...mapActions([
       'inputCustomer', 'getCustomers', 'deleteCustomer'
     ]),
+    getTimeOnly(date) {
+      console.log(date)
+      return new Date(date)
+    },
     addCustomer() {
       const uid = localStorage.getItem('uid');
 
@@ -200,6 +204,12 @@ export default {
       }
       this.inputCustomer(newCustomer)
       this.getCustomers()
+      this.name = "",
+      this.gender = "",
+      this.email = "",
+      this.phonenumber = "",
+      this.birthyear = "",
+      this.occupation = ""
     },
     removeCustomer(id) {
       this.deleteCustomer(id)
