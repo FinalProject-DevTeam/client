@@ -80,12 +80,13 @@ export default new Vuex.Store({
       let id = localStorage.getItem('uid');
       let email = localStorage.getItem('email')
 
-      let { data } = await axios.get(`http://localhost:3000/customer/food/${payload.food}`, {
+      let { data } = await axios.get(`http://localhost:3000/customer/email/${payload.food}`, {
         headers: {
           uid: id
         }
       })
-      
+
+
       if (data.data.length === 0) {
         swal(
           'Sorry!',
@@ -98,7 +99,7 @@ export default new Vuex.Store({
         msg.receiver = data.data;
         msg.owneremail = email;
         axios.post(`http://localhost:3000/emailpromo`, msg)
-  
+
           .then(result => {
             console.log('masuk')
             swal(
@@ -106,9 +107,9 @@ export default new Vuex.Store({
               `Your email successfully send to ${data.data.toString()}`,
               'success'
             )
-            router.push('/promo');
+            router.push('/emailpromo');
           })
-  
+
           .catch(err => {
             console.log(err)
             swal(
@@ -119,6 +120,51 @@ export default new Vuex.Store({
           })
       }
     },
+
+    async sendSmsPromo({ commit }, payload) {
+      let id = localStorage.getItem('uid');
+
+      let { data } = await axios.get(`http://localhost:3000/customer/sms/${payload.food}`, {
+        headers: {
+          uid: id
+        }
+      })
+
+      let receiver = data.data
+      if (data.data.length === 0) {
+        swal(
+          'Sorry!',
+          `No one will receive this SMS promo!`,
+          'info'
+        )
+      }
+      else {
+        let content = payload.content;
+        let dataSMS = {
+          content:payload.content,
+          AllNumber: receiver
+        }
+        axios.post(`http://localhost:3000/smspromo`, dataSMS)
+          .then(result => {
+            console.log('masuk sms')
+            swal(
+              'Good Job',
+              `Your SMS successfully send to ${data.data.toString()}`,
+              'success'
+            )
+            router.push('/smspromo');
+          })
+          .catch(err => {
+            console.log(err)
+            swal(
+              'Failed!',
+              `Failed to send sms`,
+              'error'
+            )
+          })
+      }
+    },
+
 
     inputTransaction({ commit }, payload) {
       axios.post(`http://localhost:3000/transaction`, payload)

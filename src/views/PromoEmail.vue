@@ -1,12 +1,12 @@
 <template>
-  <div class="promos">
-    <Nav/>
-    <Promo/>
-  </div>
+<div class="promos">
+  <Nav/>
+  <Promo/>
+</div>
 </template>
 
 <script>
-import Promo from '../components/Promo/Promo.vue';
+import Promo from '../components/Promo/EmailPromo.vue';
 import Nav from '../components/Header/Navbar.vue';
 
 export default {
