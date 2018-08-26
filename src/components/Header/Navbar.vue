@@ -40,8 +40,13 @@
                 </router-link>
               </a>
               <a class="navbar-item">
-                <router-link to='/promo'>
-                  Promo
+                <router-link to='/emailpromo'>
+                  Email
+                </router-link>
+              </a>
+              <a class="navbar-item">
+                <router-link to='/smspromo'>
+                  SMS
                 </router-link>
               </a>
               <a class="navbar-item" @click="setLogOut">

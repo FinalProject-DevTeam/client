@@ -28,7 +28,7 @@
                 <!-- Label left empty for spacing -->
                 <p class="control">
 
-                  <button @click="sendEmail" class="button is-success is-medium"> <i class="fas fa-check"></i>
+                  <button @click="sendSMS" class="button is-success is-medium"> <i class="fas fa-check"></i>
                     Blast SMS to Customer
                   </button>
                 </p>
@@ -57,19 +57,15 @@ export default {
   },
   methods: {
     ...mapActions([
-      'sendEmailPromo',
+      'sendSmsPromo',
     ]),
-    sendEmail() {
-      const dataFoodWithMsg = {
-        food: this.foodselected,
-        msg: {
-          subject: this.subject,
-          content: this.content
-        }
-      };
-      this.sendEmailPromo(dataFoodWithMsg)
 
-      this.subject = '';
+    sendSMS() {
+      const datafoodWithContent = {
+        food: this.foodselected,
+        content: this.content
+      };
+      this.sendSmsPromo(datafoodWithContent)
       this.content = '';
       this.foodselected = '';
     },
@@ -80,9 +76,9 @@ export default {
 
 <style scoped>
 @import "~vue-wysiwyg/dist/vueWysiwyg.css";
-.promo .tile {
-  border-radius: 30px;
-  box-shadow: 3px 3px 5px 0px #ccc;
+.smspromo .tile {
+  border-radius: 20px;
+  box-shadow: 1px 1px 3px 1px #ccc;
   /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 

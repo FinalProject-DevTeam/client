@@ -21,7 +21,7 @@ new Vue({
     let self = this
     firebase.initializeApp(config);
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user)
+      // console.log(user)
       if(user) {
         localStorage.setItem('isLogin', true);
         localStorage.setItem('uid', user.uid);
