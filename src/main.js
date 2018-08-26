@@ -24,6 +24,7 @@ new Vue({
       if(user) {
         localStorage.setItem('isLogin', true);
         localStorage.setItem('uid', user.uid);
+        localStorage.setItem('email', user.email);
         localStorage.setItem('name', user.displayName);
 
         self.$store.commit('isLoginMutation', true)

@@ -76,28 +76,48 @@ export default new Vuex.Store({
           )
         })
     },
-    sendEmailPromo({ commit }, payload) {
-      console.log('entering email store.js')
-      axios.post(`http://localhost:3000/emailpromo`, payload)
+    async sendEmailPromo({ commit }, payload) {
+      let id = localStorage.getItem('uid');
+      let email = localStorage.getItem('email')
 
-        .then(result => {
-          console.log('masuk')
-          swal(
-            'Good Job',
-            `sucess send Email`,
-            'success'
-          )
-          router.push('/promo');
-        })
-
-        .catch(err => {
-          console.log(err)
-          swal(
-            'Failed!',
-            `Failed to send email`,
-            'error'
-          )
-        })
+      let { data } = await axios.get(`http://localhost:3000/customer/food/${payload.food}`, {
+        headers: {
+          uid: id
+        }
+      })
+      
+      if (data.data.length === 0) {
+        swal(
+          'Sorry!',
+          `No one will receive this promo!`,
+          'info'
+        )
+      }
+      else {
+        let msg = payload.msg;
+        msg.receiver = data.data;
+        msg.owneremail = email;
+        axios.post(`http://localhost:3000/emailpromo`, msg)
+  
+          .then(result => {
+            console.log('masuk')
+            swal(
+              'Good Job',
+              `Your email successfully send to ${data.data.toString()}`,
+              'success'
+            )
+            router.push('/promo');
+          })
+  
+          .catch(err => {
+            console.log(err)
+            swal(
+              'Failed!',
+              `Failed to send email`,
+              'error'
+            )
+          })
+      }
     },
 
     inputTransaction({ commit }, payload) {

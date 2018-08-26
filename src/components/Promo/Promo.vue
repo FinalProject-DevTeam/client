@@ -1,84 +1,85 @@
 <template>
-<div class="promo">
-  <div class="container">
-    <div class="tile is-ancestor">
-      <div class="tile is-parent is-12">
-        <article class="tile is-child box">
-          <p class="title">Send Email Promo</p>
-          <div class="content">
-            <section>
-              <b-field horizontal label="Subject" message="Please enter a subject">
-                <b-input v-model="subject" name="subject" expanded></b-input>
-              </b-field>
-              <b-field horizontal label="Receiver" message="Please enter a receiver">
-                <b-input v-model="receiver" name="receiver" expanded></b-input>
-              </b-field>
-              <b-field horizontal label="From">
-                <b-input v-model="owneremail" name="email" type="email" placeholder="nobody@myCRM.com" expanded></b-input>
-              </b-field>
-              <b-field horizontal label="Message">
-                <wysiwyg v-model="content" />
-              </b-field>
-              <b-field horizontal>
-                <!-- Label left empty for spacing -->
-                <p class="control">
+  <div class="promo">
+    <div class="container">
+      <div class="tile is-ancestor">
+        <div class="tile is-parent is-12">
+          <article class="tile is-child box">
+            <p class="title">Send Email Promo</p>
+            <div class="content">
+              <section>
+                <b-field horizontal label="Subject" message="Please enter a subject">
+                  <b-input v-model="subject" name="subject" expanded></b-input>
+                </b-field>
+                <b-field
+                  label="Food Promo">
+                  <b-select v-model='foodselected' expanded>
+                      <option value="Nasi+Goreng">Nasi Goreng</option>
+                      <option value="Ayam+Goreng">Ayam Goreng</option>
+                      <option value="Udang+Goreng">Udang Goreng</option>
+                      <option value="Salmon+Goreng">Salmon Goreng</option>
+                      <option value="Pisang+Goreng">Pisang Goreng</option>
+                      <option value="Kentang+Goreng">Kentang Goreng</option>
+                      <option value="Pizza">Pizza</option>
+                      <option value="Sate">Sate</option>
+                  </b-select>
+                </b-field>
+                <b-field horizontal label="Message">
+                  <wysiwyg v-model="content" />
+                </b-field>
+                <b-field horizontal>
+                  <!-- Label left empty for spacing -->
+                  <p class="control">
 
                   <button @click="sendEmail" class="button is-success is-medium"> <i class="fas fa-check"></i>
-                     Blast Email
+                    Blast Email
                   </button>
-                </p>
-              </b-field>
-            </section>
-          </div>
-        </article>
+                  </p>
+                </b-field>
+              </section>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 import {
-  mapState,
   mapActions
 } from 'vuex';
-
 
 export default {
   name: 'promo',
   data: function() {
     return {
-      receiver: '',
-      owneremail: '',
       subject: '',
       content: '',
       datas: 'ini data',
-      myHTML: ''
-    }
+      myHTML: '',
+      foodselected: '',
+    };
   },
   methods: {
     ...mapActions([
-      'sendEmailPromo'
-
+      'sendEmailPromo',
     ]),
-
     sendEmail() {
-      const msg = {
-        receiver: this.receiver,
-        owneremail: this.owneremail,
-        subject: this.subject,
-        content: this.content
+      const dataFoodWithMsg = {
+        food: this.foodselected,
+        msg: {
+          subject: this.subject,
+          content: this.content
+        }
       };
+      this.sendEmailPromo(dataFoodWithMsg)
 
-      console.log('ini msg', msg)
-      this.sendEmailPromo(msg)
-      this.receiver = '';
-      this.owneremail = '';
       this.subject = '';
       this.content = '';
-    }
-  }
-}
+      this.foodselected = '';
+    },
+  },
+};
 </script>
 
 

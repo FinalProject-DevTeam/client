@@ -89,7 +89,7 @@ export default {
       let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
       if (this.dataName === 'customers-data') {
         let id = localStorage.getItem('uid');
-        let customersData = await axios.get('http://localhost:3000/customer', {
+        let customersData = await axios.get('http://localhost:3000/customer/listbydate', {
             headers: {
               uid: id,
             }
@@ -217,11 +217,8 @@ export default {
     async getPrediction() {
       let id = localStorage.getItem('uid')
       let { data } = await axios.get(`http://localhost:3000/aws/prediction/${id}`)
-      console.log(data);
 
-      
       let resultArr = [];
-
       for(let i = 1; i < data.length; i++) {
         let index = 0;
         let maxNumber = 0;
@@ -230,16 +227,37 @@ export default {
           if(data[i][j] > maxNumber) {
             maxNumber = data[i][j];
             index = j;
-            food = data[0][j]
+            food = data[0][j];
           }
         }
-        let result = {
-          point: maxNumber,
-          foodfav: food
-        }
-        resultArr.push(result)
+        resultArr.push(food)
       }
-      console.log(resultArr)
+
+      let customer = await axios.get(`http://localhost:3000/customer/listbydate`, {
+        headers: {
+          uid: id,
+        }
+      });
+
+
+      let dataCustomers = customer.data.data;
+      for (let i = 0; i < dataCustomers.length; i++) {
+        let findDot = resultArr[i].indexOf('.');
+        if (findDot === -1) {
+          dataCustomers[i].foodfav = resultArr[i];
+        }
+        else {
+          dataCustomers[i].foodfav = resultArr[i].split('.').join(' ');
+        }
+      }
+      // console.log(dataCustomers)
+      dataCustomers.map(customer => {
+        axios.post(`http://localhost:3000/customer/setdata/${customer.id}`, customer)
+          .then(result => {
+            console.log('berhasil', '=>', result.data)
+          })
+      })
+
     }
   }
 };
