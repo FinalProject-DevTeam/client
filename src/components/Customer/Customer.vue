@@ -114,6 +114,7 @@
             <p class="title">List Customers</p>
             <hr>
             <div class="content">
+
               <table class="table is-hoverable">
                 <thead>
                   <tr>
@@ -129,9 +130,15 @@
 
                 <tbody>
                   <tr v-for="(customer, index) in customers" :key="index">
-                    <td>{{ customer.name }}</td>
-                    <td>{{ customer.gender }}</td>
-                    <td>{{ customer.email }}</td>
+                    <td class="names">{{ customer.name }}</td>
+                    <td v-if="customer.gender === 'Male'">
+                      <ion-icon name="male" size="large"></ion-icon>
+                    </td>
+                    <td v-else>
+                      <ion-icon name="female" size="large"></ion-icon>
+                    </td>
+
+                    <td class="email">{{ customer.email }}</td>
                     <td>{{ customer.phoneNumber }}</td>
                     <td>{{ customer.birthYear }}</td>
                     <td>{{ customer.occupation }}</td>
@@ -190,6 +197,14 @@ export default {
       console.log(date)
       return new Date(date)
     },
+    getGender(field) {
+      console.log(field)
+      if (field === 'Male') {
+        return '<ion-icon name="male"></ion-icon>'
+      } else {
+        return '<ion-icon name="female"></ion-icon>'
+      }
+    },
     addCustomer() {
       const uid = localStorage.getItem('uid');
 
@@ -205,11 +220,11 @@ export default {
       this.inputCustomer(newCustomer)
       this.getCustomers()
       this.name = "",
-      this.gender = "",
-      this.email = "",
-      this.phonenumber = "",
-      this.birthyear = "",
-      this.occupation = ""
+        this.gender = "",
+        this.email = "",
+        this.phonenumber = "",
+        this.birthyear = "",
+        this.occupation = ""
     },
     removeCustomer(id) {
       this.deleteCustomer(id)
@@ -221,6 +236,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.email {
+  color: #808080
+}
+
+.names {
+  font-weight: 700
+}
+
 .notification .title,
 .notification .subtitle,
 .notification .content {
