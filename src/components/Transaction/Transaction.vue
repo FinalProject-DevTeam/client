@@ -93,7 +93,7 @@
               <tbody>
                 <tr v-for="(transaction, index) in transactions " :key="index ">
                   <th>{{index+1}} </th>
-                  <td>{{transaction.customerId}}</td>
+                  <td>{{transaction.name}}</td>
                   <td>{{transaction.itemsOrdered.toString()}}</td>
                   <td>{{transaction.createdAt}}</td>
                   <td>
