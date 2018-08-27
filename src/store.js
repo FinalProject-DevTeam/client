@@ -18,7 +18,9 @@ export default new Vuex.Store({
     sampleTransactions: null,
     isLogin:null,
     uid:null,
-    name:'namecova'
+    name:'namecova',
+    datafood:[],
+    foodcount:[]
   },
   mutations: {
     customersData (state, payload) {
@@ -26,6 +28,12 @@ export default new Vuex.Store({
     },
     customerNames (state, payload) {
       state.onlyNames = payload;
+    },
+    DataFood (state, payload) {
+      state.datafood = payload;
+    },
+    FoodCount (state, payload) {
+      state.foodcount = payload;
     },
     transactionData (state, payload) {
       state.transactions = payload;
@@ -294,11 +302,24 @@ export default new Vuex.Store({
       })
 
         .then(result => {
-          // let sampleTransactions = [];
-          //
-          // for(let i = 0; i < 4; i++) {
-          //   sampleTransactions.push(result.data.data[i])
-          // }
+          let items = []
+          let transaction = result.data.data
+          // console.log('trans', transaction)
+          for(let i=0; i < transaction.length; i++){
+            for (let j = 0; j < transaction[i].itemsOrdered.length; j++) {
+              items.push(transaction[i].itemsOrdered[j])
+            }
+          }
+
+          let nameFood = ['Nasi Goreng', 'Ayam Goreng', 'Udang Goreng', 'Salmon Goreng', 'Pisang Goreng', 'Kentang Goreng', 'Pizza', 'Sate'];
+          let countFood = [];
+          for (let i = 0; i < nameFood.length; i++) {
+            let CountEachFood = items.filter(datum => (datum === nameFood[i]))
+            countFood.push(CountEachFood.length)
+          }
+
+          commit('DataFood', nameFood)
+          commit('FoodCount', countFood)
           commit('transactionData', result.data.data)
           commit('sTransactions', result.data.data.slice(0,4))
         })
