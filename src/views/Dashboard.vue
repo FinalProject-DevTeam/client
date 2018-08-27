@@ -23,11 +23,12 @@ export default {
     HeadDashboard,
     Dashboard
   },
-  // created() {
-  //   console.log('get')
-  //   this.getCustomers();
-  //   this.getTransactions();
-  // },
+  mounted() {
+    //do something after mounting vue instance
+    if (localStorage.getItem('isLogin') === 'false') {
+      this.$router.push('/')
+    }
+  }
   // methods: {
   //   ...mapActions([
   //     'getCustomers', 'getTransactions'

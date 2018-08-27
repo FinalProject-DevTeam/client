@@ -1,8 +1,8 @@
 <template>
-  <div class="transaction">
-    <Nav/>
-    <Transactionpage/>
-  </div>
+<div class="transaction">
+  <Nav/>
+  <Transactionpage/>
+</div>
 </template>
 
 <script>
@@ -14,5 +14,12 @@ export default {
     Transactionpage,
     Nav
   },
+  mounted() {
+    //do something after mounting vue instance
+    if (localStorage.getItem('isLogin') === 'false') {
+      this.$router.push('/')
+    }
+  },
+
 };
 </script>

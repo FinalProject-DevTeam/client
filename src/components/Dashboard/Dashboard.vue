@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 .info-tiles {
   width: 700px;
   border-radius: 300px;
