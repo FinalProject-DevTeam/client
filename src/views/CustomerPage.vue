@@ -1,8 +1,8 @@
 <template>
-  <div class="customer">
-    <Nav/>
-    <Customer/>
-  </div>
+<div class="customer">
+  <Nav/>
+  <Customer/>
+</div>
 </template>
 
 <script>
@@ -14,5 +14,11 @@ export default {
     Customer,
     Nav
   },
+  mounted() {
+    //do something after mounting vue instance
+    if (localStorage.getItem('isLogin' === 'false')) {
+      this.$router.push('/')
+    }
+  }
 };
 </script>

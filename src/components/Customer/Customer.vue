@@ -144,8 +144,9 @@
                     <td>{{ customer.occupation }}</td>
                     <td>
                       <div class="buttons has-addons">
-                        <span class="button is-success is-selected"><router-link :to='`/detailCustomer/${customer.id}`'>Update</router-link></span>
-                        <span class="button is-danger" @click='removeCustomer(customer.id)'>Delete</span>
+                        <span class="button is-info is-selected"><router-link :to='`/detailCustomer/${customer.id}`'>Update</router-link></span>
+                        <span class="button is-danger" @click='removeCustomer(customer.id)'><ion-icon size="medium" name="trash"></ion-icon>Delete</span>
+
                       </div>
                     </td>
                   </tr>

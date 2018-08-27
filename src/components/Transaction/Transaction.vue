@@ -68,7 +68,7 @@
 
                   </div>
                   <p class="content ">
-                    <a class="button is-success is-medium" @click="addTransactions">Add Transaction</a>
+                    <a class="button is-info is-medium" @click="addTransactions">Add Transaction</a>
                   </p>
                 </section>
 
@@ -84,7 +84,7 @@
               <thead>
                 <tr>
                   <th><abbr title="Position ">No</abbr></th>
-                  <th><abbr title="Played ">Customer ID</abbr></th>
+                  <th width="10%"><abbr title="Played ">Customer ID</abbr></th>
                   <th><abbr title="Drawn ">Menu</abbr></th>
                   <th><abbr title="Lost ">Transaction Date</abbr></th>
                   <th><abbr title="Goals against ">Action </abbr></th>
@@ -98,7 +98,7 @@
                   <td>{{transaction.createdAt}}</td>
                   <td>
                     <div class="buttons has-addons">
-                      <span class="button is-success is-selected">  <router-link :to="`/transaction/${transaction.id}`">Update</router-link></span>
+                      <span class="button is-info is-selected">  <router-link :to="`/transaction/${transaction.id}`">Update</router-link></span>
                       <span class="button is-danger" @click='removeTransaction(transaction.id)'>Delete</span>
                     </div>
                   </td>
@@ -170,6 +170,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+tr {
+  border-bottom: 3px solid #eee
+}
+
 .notification .title,
 .notification .subtitle,
 .notification .content {

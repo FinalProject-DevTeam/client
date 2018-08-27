@@ -14,5 +14,11 @@ export default {
     Promo,
     Nav
   },
+  mounted() {
+    //do something after mounting vue instance
+    if (localStorage.getItem('isLogin') === 'false') {
+      this.$router.push('/')
+    }
+  },
 };
 </script>

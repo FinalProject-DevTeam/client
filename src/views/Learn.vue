@@ -50,18 +50,18 @@
         <p class="title">Main column</p>
         <p class="subtitle">With some content</p>
         <div class="content">
-        <b-field>
-          <b-select placeholder="dataName" v-model="dataName">
-            <option value="customers-data">customers</option>
-            <option value="transactions-data">transactions</option>
-          </b-select>
-        </b-field>
-        <b-field>
-          <b-select placeholder="datasourceId" v-model="datasourceId">
-            <option value="restaurantId">restaurantId</option>
-            <option value="date">date</option>
-          </b-select>
-        </b-field>
+          <b-field>
+            <b-select placeholder="dataName" v-model="dataName">
+              <option value="customers-data">customers</option>
+              <option value="transactions-data">transactions</option>
+            </b-select>
+          </b-field>
+          <b-field>
+            <b-select placeholder="datasourceId" v-model="datasourceId">
+              <option value="restaurantId">restaurantId</option>
+              <option value="date">date</option>
+            </b-select>
+          </b-field>
         </div>
       </article>
     </div>
@@ -83,6 +83,12 @@ export default {
   components: {
     Nav
   },
+  mounted() {
+    //do something after mounting vue instance
+    if (localStorage.getItem('isLogin') === 'false') {
+      this.$router.push('/')
+    }
+  },
   methods: {
     async uploadToS3() {
       let date = new Date();
@@ -90,18 +96,18 @@ export default {
       if (this.dataName === 'customers-data') {
         let id = localStorage.getItem('uid');
         let customersData = await axios.get('http://localhost:3000/customer/listbydate', {
-            headers: {
-              uid: id,
-            }
-          })
+          headers: {
+            uid: id,
+          }
+        })
         let folderName = 'customersData';
         let columns = {
-      	  gender: "gender",
-      		birthYear: "birthyear",
-      		occupation: "occupation",
+          gender: "gender",
+          birthYear: "birthyear",
+          occupation: "occupation",
         }
         let arrData = customersData.data.data.map((datum) => {
-          return [ datum.genderML , Number(datum.birthYear), datum.occupationML ];
+          return [datum.genderML, Number(datum.birthYear), datum.occupationML];
         })
         let payload = {
           arrData: arrData,
@@ -110,7 +116,9 @@ export default {
           columns: columns,
           id: id,
         }
-        let { data } = await axios.post('http://localhost:3000/aws/s3', payload)
+        let {
+          data
+        } = await axios.post('http://localhost:3000/aws/s3', payload)
         console.log(data);
       } else {
         let id = today
@@ -136,7 +144,9 @@ export default {
           columns: columns,
           id: id,
         }
-        let { data } = await axios.post('http://localhost:3000/aws/s3', payload)
+        let {
+          data
+        } = await axios.post('http://localhost:3000/aws/s3', payload)
         console.log(data);
       }
     },
@@ -158,7 +168,9 @@ export default {
           id: id,
         }
       }
-      let { data } = await axios.post(`http://localhost:3000/aws/datasource`, payload)
+      let {
+        data
+      } = await axios.post(`http://localhost:3000/aws/datasource`, payload)
       console.log(data);
     },
     async getDataSourceStatus() {
@@ -166,11 +178,15 @@ export default {
       let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
       if (this.datasourceId === 'restaurantId') {
         let id = `${localStorage.getItem('uid')}-${today}`
-        let { data } = await axios.get(`http://localhost:3000/aws/datasource/${id}`)
+        let {
+          data
+        } = await axios.get(`http://localhost:3000/aws/datasource/${id}`)
         console.log(data);
       } else {
         let id = today
-        let { data } = await axios.get(`http://localhost:3000/aws/datasource/${id}`)
+        let {
+          data
+        } = await axios.get(`http://localhost:3000/aws/datasource/${id}`)
         console.log(data);
       }
     },
@@ -186,45 +202,59 @@ export default {
       }
     },
     async createMLModel() {
-      let { data } = await axios.post(`http://localhost:3000/aws/model`)
+      let {
+        data
+      } = await axios.post(`http://localhost:3000/aws/model`)
       console.log(data);
     },
     async getModelStatus() {
       let date = new Date();
       let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
-      let { data } = await axios.get(`http://localhost:3000/aws/model/${today}`)
+      let {
+        data
+      } = await axios.get(`http://localhost:3000/aws/model/${today}`)
       console.log(data);
     },
     async createEvaluation() {
-      let { data } = await axios.post(`http://localhost:3000/aws/evaluation`)
+      let {
+        data
+      } = await axios.post(`http://localhost:3000/aws/evaluation`)
     },
     async getEvaluationStatus() {
       let date = new Date();
       let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
-      let { data } = await axios.get(`http://localhost:3000/aws/evaluation/${today}`)
+      let {
+        data
+      } = await axios.get(`http://localhost:3000/aws/evaluation/${today}`)
       console.log(data);
     },
     async createNewBatchPrediction() {
       let id = localStorage.getItem('uid')
-      let { data } = await axios.post(`http://localhost:3000/aws/prediction/${id}`)
+      let {
+        data
+      } = await axios.post(`http://localhost:3000/aws/prediction/${id}`)
       console.log(data);
     },
     async getPredictionStatus() {
       let id = localStorage.getItem('uid')
-      let { data } = await axios.get(`http://localhost:3000/aws/predictionstatus/${id}`)
+      let {
+        data
+      } = await axios.get(`http://localhost:3000/aws/predictionstatus/${id}`)
       console.log(data);
     },
     async getPrediction() {
       let id = localStorage.getItem('uid')
-      let { data } = await axios.get(`http://localhost:3000/aws/prediction/${id}`)
+      let {
+        data
+      } = await axios.get(`http://localhost:3000/aws/prediction/${id}`)
 
       let resultArr = [];
-      for(let i = 1; i < data.length; i++) {
+      for (let i = 1; i < data.length; i++) {
         let index = 0;
         let maxNumber = 0;
         let food = '';
-        for(let j = 0; j < data[i].length; j++) {
-          if(data[i][j] > maxNumber) {
+        for (let j = 0; j < data[i].length; j++) {
+          if (data[i][j] > maxNumber) {
             maxNumber = data[i][j];
             index = j;
             food = data[0][j];
@@ -245,8 +275,7 @@ export default {
         let findDot = resultArr[i].indexOf('.');
         if (findDot === -1) {
           dataCustomers[i].foodfav = resultArr[i];
-        }
-        else {
+        } else {
           dataCustomers[i].foodfav = resultArr[i].split('.').join(' ');
         }
       }
