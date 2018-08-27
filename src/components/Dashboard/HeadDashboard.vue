@@ -25,6 +25,12 @@ export default {
 </script>
 
 <style>
+.title {
+  text-shadow: 0 0 3px #808080;
+  border-bottom: 1px solid #eee;
+  border-width: 1px
+}
+
 .custom {
   background: linear-gradient(to right, #5B86E5, #36D1DC)
 }
