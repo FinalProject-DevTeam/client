@@ -252,20 +252,11 @@ export default new Vuex.Store({
         }
       })
         .then(result => {
-          // let sampleCustomers = [];
-          // console.log(this.state.uid)
-          // for(let i = 0; i < 4; i++) {
-          //   sampleCustomers.push(result.data.data[i])
-          // }
           commit('customersData', result.data.data)
           commit('sCustomers', result.data.data.slice(0,4))
         })
         .catch(err => {
-          swal(
-            'Failed',
-            'Cannot Load',
-            'error'
-          )
+          console.log(err)
         })
     },
     getSingleCustomer({ commit }, payload) {
@@ -274,11 +265,7 @@ export default new Vuex.Store({
           commit('singleCustomerData', result.data.data)
         })
         .catch(err => {
-          swal(
-            'Failed',
-            'Cannot Load',
-            'error'
-          )
+          console.log(err)
         })
     },
 
@@ -288,11 +275,7 @@ export default new Vuex.Store({
           commit('singleTransactionData', result.data.data)
         })
         .catch(err => {
-          swal(
-            'Failed',
-            'Cannot Load',
-            'error'
-          )
+          console.log(err)
         })
     },
 
