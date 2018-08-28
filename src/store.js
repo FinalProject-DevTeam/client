@@ -293,44 +293,35 @@ export default new Vuex.Store({
     },
 
 
-    getTransactions({ commit }) {
-      const restaurantId = localStorage.getItem('uid')
-      axios.get(`http://localhost:3000/transaction`, {
-        headers: {
-          uid: restaurantId
+    async getTransactions({ commit }) {
+      const restaurantId = localStorage.getItem('uid');
+      let transaction = [];
+      let items = [];
+      let dataPopulate = await axios.get(`http://localhost:3000/populate`)
+
+      for (let i = 0; i < dataPopulate.data.length; i++) {
+        if (dataPopulate.data[i].restaurantId === restaurantId) {
+          transaction.push(dataPopulate.data[i])
         }
-      })
+      }
 
-        .then(result => {
-          let items = []
-          let transaction = result.data.data
-          // console.log('trans', transaction)
-          for(let i=0; i < transaction.length; i++){
-            for (let j = 0; j < transaction[i].itemsOrdered.length; j++) {
-              items.push(transaction[i].itemsOrdered[j])
-            }
-          }
+      for(let i = 0; i < transaction.length; i++){
+        for (let j = 0; j < transaction[i].itemsOrdered.length; j++) {
+          items.push(transaction[i].itemsOrdered[j])
+        }
+      }
 
-          let nameFood = ['Nasi Goreng', 'Ayam Goreng', 'Udang Goreng', 'Salmon Goreng', 'Pisang Goreng', 'Kentang Goreng', 'Pizza', 'Sate'];
-          let countFood = [];
-          for (let i = 0; i < nameFood.length; i++) {
-            let CountEachFood = items.filter(datum => (datum === nameFood[i]))
-            countFood.push(CountEachFood.length)
-          }
+      let nameFood = ['Nasi Goreng', 'Ayam Goreng', 'Udang Goreng', 'Salmon Goreng', 'Pisang Goreng', 'Kentang Goreng', 'Pizza', 'Sate'];
+      let countFood = [];
+      for (let i = 0; i < nameFood.length; i++) {
+        let CountEachFood = items.filter(datum => (datum === nameFood[i]))
+        countFood.push(CountEachFood.length)
+      }
 
-          commit('DataFood', nameFood)
-          commit('FoodCount', countFood)
-          commit('transactionData', result.data.data)
-          commit('sTransactions', result.data.data.slice(0,4))
-        })
-
-        .catch(err => {
-          swal(
-            'Failed',
-            'Cannot Load',
-            'error'
-          )
-        })
+      commit('DataFood', nameFood)
+      commit('FoodCount', countFood)
+      commit('transactionData', transaction)
+      commit('sTransactions', transaction.slice(0,4))
     },
     deleteCustomer({ commit }, payload) {
       // console.log("di store deletecustomer", payload)

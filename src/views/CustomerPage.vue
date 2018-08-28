@@ -1,8 +1,8 @@
 <template>
-<div class="customer">
-  <Nav/>
-  <Customer/>
-</div>
+  <div class="customer">
+    <Nav/>
+    <Customer/>
+  </div>
 </template>
 
 <script>
