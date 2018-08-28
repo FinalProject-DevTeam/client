@@ -1,8 +1,11 @@
 <template>
-<div class="small">
-  <line-chart :chart-data="datacollection"></line-chart>
-  <!-- <button @click="fillData()">Show Data</button> -->
-</div>
+  <div class="chart">
+    <div class="small">
+      <h1 class="title is-3 customTitle">Total Transactions by Menu</h1>
+      <line-chart :chart-data="datacollection"></line-chart>
+      <!-- <button @click="fillData()">Show Data</button> -->
+    </div>
+  </div>
 </template>
 <script>
 import LineChart from '../../PieChart/PieChart';
@@ -12,6 +15,12 @@ import {
 } from 'vuex';
 
 export default {
+  name: 'PieChart',
+  data: function() {
+    return {
+      datacollection: null
+    }
+  },
   components: {
     LineChart
   },
@@ -19,11 +28,6 @@ export default {
     ...mapState([
       'datafood', 'foodcount'
     ]),
-  },
-  data() {
-    return {
-      datacollection: null
-    }
   },
   mounted() {
     this.datacollection = {
@@ -69,5 +73,8 @@ export default {
 .small {
   max-width: 600px;
   margin: 150px auto;
+}
+.customTitle {
+  text-align: center
 }
 </style>

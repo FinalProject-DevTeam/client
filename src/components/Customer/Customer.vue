@@ -131,13 +131,7 @@
                 <tbody>
                   <tr v-for="(customer, index) in customers" :key="index">
                     <td class="names">{{ customer.name }}</td>
-                    <td v-if="customer.gender === 'Male'">
-                      <ion-icon name="male" size="large"></ion-icon>
-                    </td>
-                    <td v-else>
-                      <ion-icon name="female" size="large"></ion-icon>
-                    </td>
-
+                    <td>{{ customer.gender }}</td>
                     <td class="email">{{ customer.email }}</td>
                     <td>{{ customer.phoneNumber }}</td>
                     <td>{{ customer.birthYear }}</td>
@@ -145,7 +139,7 @@
                     <td>
                       <div class="buttons has-addons">
                         <span class="button is-info is-selected"><router-link :to='`/detailCustomer/${customer.id}`'>Update</router-link></span>
-                        <span class="button is-danger" @click='removeCustomer(customer.id)'><ion-icon size="medium" name="trash"></ion-icon>Delete</span>
+                        <span class="button is-danger" @click='removeCustomer(customer.id)'>Delete</span>
 
                       </div>
                     </td>
@@ -267,5 +261,8 @@ li {
 
 a {
   color: #42b983;
+}
+.button a {
+  text-decoration: none
 }
 </style>

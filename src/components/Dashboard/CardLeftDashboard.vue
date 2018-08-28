@@ -3,7 +3,6 @@
   <div class="card events-card">
     <header class="card-header">
       <p class="card-header-title">
-        {{ name }}
       </p>
     </header>
     <div class="card-table">

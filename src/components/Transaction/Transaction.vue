@@ -80,11 +80,11 @@
           <article class="tile is-child box ">
 
             <p class="title">List Transactions</p>
-            <table class="table is-hoverable ">
+            <table class="table is-hoverable">
               <thead>
                 <tr>
                   <th><abbr title="Position ">No</abbr></th>
-                  <th width="10%"><abbr title="Played ">Customer ID</abbr></th>
+                  <th width="20%"><abbr title="Played ">Customer Name</abbr></th>
                   <th><abbr title="Drawn ">Menu</abbr></th>
                   <th><abbr title="Lost ">Transaction Date</abbr></th>
                   <th><abbr title="Goals against ">Action </abbr></th>
@@ -93,12 +93,12 @@
               <tbody>
                 <tr v-for="(transaction, index) in transactions " :key="index ">
                   <th>{{index+1}} </th>
-                  <td>{{transaction.name}}</td>
+                  <td>{{transaction.customer.name}}</td>
                   <td>{{transaction.itemsOrdered.toString()}}</td>
                   <td>{{transaction.createdAt}}</td>
                   <td>
                     <div class="buttons has-addons">
-                      <span class="button is-info is-selected">  <router-link :to="`/transaction/${transaction.id}`">Update</router-link></span>
+                      <span class="button is-info is-selected"><router-link :to="`/transaction/${transaction.id}`">Update</router-link></span>
                       <span class="button is-danger" @click='removeTransaction(transaction.id)'>Delete</span>
                     </div>
                   </td>
@@ -202,4 +202,8 @@ li {
 a {
   color: #42b983;
 }
+.button a {
+  text-decoration: none
+}
+
 </style>

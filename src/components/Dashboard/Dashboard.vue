@@ -1,29 +1,29 @@
 <template>
-<div class="dashboardcomponent">
-  <div class="container">
-    <section class="info-tiles">
-      <div class="tile is-ancestor has-text-centered">
-        <div class="tile is-parent">
-          <article class="cust tile is-child box">
-            <p v-if="customers === null">Loading..</p>
-            <p class="white title" v-else>{{customers.length}}</p>
-            <p class="white subtitle">Customers</p>
-          </article>
+  <div class="dashboardcomponent">
+    <div class="container">
+      <section class="info-tiles">
+        <div class="tile is-ancestor has-text-centered">
+          <div class="tile is-parent">
+            <article class="cust tile is-child box">
+              <p v-if="customers === null">Loading..</p>
+              <p class="white title" v-else>{{customers.length}}</p>
+              <p class="white subtitle">Customers</p>
+            </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="trans tile is-child box">
+              <p v-if="transactions === null">Loading..</p>
+              <p class="white title" v-else>{{transactions.length}}</p>
+              <p class="white subtitle">Transactions</p>
+            </article>
+          </div>
         </div>
-        <div class="tile is-parent">
-          <article class="trans tile is-child box">
-            <p v-if="transactions === null">Loading..</p>
-            <p class="white title" v-else>{{transactions.length}}</p>
-            <p class="white subtitle">Transactions</p>
-          </article>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
+    <div class="container is-fluid">
+      <LeftSideDashboard />
+    </div>
   </div>
-  <div class="container is-fluid">
-    <LeftSideDashboard />
-  </div>
-</div>
 </template>
 
 <script>
@@ -85,8 +85,6 @@ export default {
   box-shadow: 3px 3px 5px 6px #ccc;
   /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
-
-canvas {}
 
 .white {
   color: #fff;

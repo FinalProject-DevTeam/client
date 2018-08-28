@@ -26,7 +26,6 @@ export default {
 
 <style>
 .title {
-  text-shadow: 0 0 3px #808080;
   border-bottom: 1px solid #eee;
   border-width: 1px
 }

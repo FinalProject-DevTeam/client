@@ -130,24 +130,25 @@ export default {
           ordered_item: "ordered_item",
         }
         let transactionsData = await axios.get('http://localhost:3000/populate')
-        let arrData = [];
-        transactionsData.data.map((datum) => {
-          return datum.itemsOrderedML.map((item) => {
-            return arrData.push([datum.customer.genderML, +(datum.customer.birthYear), datum.customer.occupationML, item]);
-          })
-        })
-        // console.log(arrData);
-        let payload = {
-          arrData: arrData,
-          dataName: this.dataName,
-          folderName: folderName,
-          columns: columns,
-          id: id,
-        }
-        let {
-          data
-        } = await axios.post('http://localhost:3000/aws/s3', payload)
-        console.log(data);
+        console.log(transactionsData.data.length)
+        // let arrData = [];
+        // transactionsData.data.map((datum) => {
+        //   return datum.itemsOrderedML.map((item) => {
+        //     return arrData.push([datum.customer.genderML, +(datum.customer.birthYear), datum.customer.occupationML, item]);
+        //   })
+        // })
+        // // console.log(arrData);
+        // let payload = {
+        //   arrData: arrData,
+        //   dataName: this.dataName,
+        //   folderName: folderName,
+        //   columns: columns,
+        //   id: id,
+        // }
+        // let {
+        //   data
+        // } = await axios.post('http://localhost:3000/aws/s3', payload)
+        // console.log(data);
       }
     },
     async createDataSource() {
@@ -279,7 +280,6 @@ export default {
           dataCustomers[i].foodfav = resultArr[i].split('.').join(' ');
         }
       }
-      // console.log(dataCustomers)
       dataCustomers.map(customer => {
         axios.post(`http://localhost:3000/customer/setdata/${customer.id}`, customer)
           .then(result => {
@@ -291,8 +291,4 @@ export default {
   }
 };
 </script>
-<style>
-html {
-  background-color: #eee
-}
-</style>
+
