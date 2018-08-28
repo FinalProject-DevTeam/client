@@ -76,9 +76,14 @@ export default {
 
 <style scoped>
 @import "~vue-wysiwyg/dist/vueWysiwyg.css";
+.smspromo .container {
+  margin-top: 100px;
+  width: 900px
+}
+
 .smspromo .tile {
   border-radius: 20px;
-  box-shadow: 1px 1px 3px 1px #ccc;
+  /* box-shadow: 1px 1px 3px 1px #ccc; */
   /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 

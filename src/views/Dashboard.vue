@@ -1,10 +1,10 @@
 <template>
-  <div class="dashboard">
-    <Nav />
-    <HeadDashboard />
-    <br>
-    <Dashboard />
-  </div>
+<div class="dashboard">
+  <Nav />
+  <HeadDashboard />
+  <br>
+  <Dashboard />
+</div>
 </template>
 
 <script>
@@ -26,3 +26,8 @@ export default {
   }
 }
 </script>
+<style>
+.hero-body {
+  margin-top: 0px
+}
+</style>

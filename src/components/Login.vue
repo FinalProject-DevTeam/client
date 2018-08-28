@@ -2,6 +2,7 @@
 <div class="login">
   <section class="hero is-info is-large">
     <div class="hero-head">
+      <br><br><br>
       <nav class="navbar">
         <div class="container">
           <div class="navbar-brand">
@@ -17,10 +18,21 @@
         </div>
       </nav>
     </div>
+
     <div class="hero-body">
 
       <div class="container has-text-centered">
-        <div id="firebaseui-auth-container"></div>
+        <div class="tile is-ancestor">
+          <div class="tile is-vertical is-8">
+            <div class="logos tile is-parent">
+              <img height="300px" src="@/assets/logologin.png" />
+            </div>
+          </div>
+          <div class="logins tile is-parent">
+            <div id="firebaseui-auth-container"></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -51,3 +63,25 @@ export default {
   },
 }
 </script>
+<style>
+.hero-body {
+  height: 99% !important;
+  margin-top: 100px;
+  padding-top: 0px !important;
+  margin-bottom: 80px !important
+}
+
+body {
+  height: 100% !important
+}
+
+.logos img {
+  padding: 0px !important
+}
+
+.logins {
+  margin-top: 80px;
+  margin-left: 50px;
+  border-left: 1px solid #eee
+}
+</style>

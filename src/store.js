@@ -20,11 +20,15 @@ export default new Vuex.Store({
     uid:null,
     name:'namecova',
     datafood:[],
-    foodcount:[]
+    foodcount:[],
+    topfood:[]
   },
   mutations: {
     customersData (state, payload) {
       state.customers = payload;
+    },
+    topFood (state, payload) {
+      state.topfood = payload;
     },
     customerNames (state, payload) {
       state.onlyNames = payload;
@@ -318,6 +322,18 @@ export default new Vuex.Store({
         countFood.push(CountEachFood.length)
       }
 
+      let listTopFood = []
+        for(let i=0; i < nameFood.length; i++){
+            let obj = {}
+          obj.food = nameFood[i]
+          obj.count = countFood[i]
+          listTopFood.push(obj)
+        }
+        listTopFood.sort(function(a, b){
+          return b.count - a.count
+        })
+        // console.log(JSON.stringify(listTopFood))
+      commit('topFood', listTopFood)
       commit('DataFood', nameFood)
       commit('FoodCount', countFood)
       commit('transactionData', transaction)
