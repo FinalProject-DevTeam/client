@@ -6,6 +6,8 @@
         <article class="tile is-child box">
           <p class="title">Send Email Promo</p>
           <div class="content">
+
+
             <section>
               <b-field horizontal label="Subject" message="Please enter a subject">
                 <b-input v-model="subject" name="subject" expanded></b-input>
@@ -85,9 +87,14 @@ export default {
 
 <style scoped>
 @import "~vue-wysiwyg/dist/vueWysiwyg.css";
+.promo .container {
+  margin-top: 100px;
+  width: 900px
+}
+
 .promo .tile {
   border-radius: 30px;
-  box-shadow: 3px 3px 5px 0px #ccc;
+  /* box-shadow: 3px 3px 5px 0px #ccc; */
   /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 

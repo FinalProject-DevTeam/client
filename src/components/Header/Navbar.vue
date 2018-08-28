@@ -3,18 +3,14 @@
   <section class="hero is-info is-large">
 
     <div class="hero-head">
-
+      <!-- <img src="../../assets/Rika-Logo.png" /> -->
       <nav class="navbar is-transparent">
         <div class="container">
+          <img height="50px" width="200px" src="@/assets/rikalogonavbar.png" />
           <div class="navbar-brand">
-            <a>
-              <h1>RIKA</h1>
-              <!-- <img class="atur" src="https://lh6.googleusercontent.com/gjqnkrHZnA64h2KqXSNp9BW_8a5aUhKTKdfjqQTC2NjynX1HOxRPa5MzWl6oGIrXjJXWawp5Jc5IOzcuh8Ww=w2860-h1564"/> -->
-            </a>
+
             <span class="navbar-burger burger" data-target="navbarMenuHeroB">
 
-            <span></span>
-            <span></span>
             </span>
           </div>
           <div id="navbarMenuHeroB" class="navbar-menu">
@@ -80,9 +76,14 @@ export default {
 </script>
 
 <style scoped>
+.container img {
+  margin-top: 20px;
+  height: 60px !important
+}
+
 .navbars .navbar {
   box-shadow: 0 8px 6px -6px black;
-  height: 80px;
+  height: 100px;
 }
 
 .atur {
