@@ -30,11 +30,11 @@
                   Transaction
                 </router-link>
               </a>
-              <a class="navbar-item">
+              <!-- <a class="navbar-item">
                 <router-link to='/learn'>
                   Learn
                 </router-link>
-              </a>
+              </a> -->
               <a class="navbar-item">
                 <router-link to='/emailpromo'>
                   Email

@@ -68,7 +68,7 @@ export default new Vuex.Store({
   },
   actions: {
     inputCustomer({ commit }, payload) {
-      axios.post(`http://localhost:3000/customer`, payload)
+      axios.post(`https://server.rika.website/customer`, payload)
 
         .then(result => {
           swal(
@@ -92,7 +92,7 @@ export default new Vuex.Store({
       let id = localStorage.getItem('uid');
       let email = localStorage.getItem('email')
 
-      let { data } = await axios.get(`http://localhost:3000/customer/email/${payload.food}`, {
+      let { data } = await axios.get(`https://server.rika.website/customer/email/${payload.food}`, {
         headers: {
           uid: id
         }
@@ -110,7 +110,7 @@ export default new Vuex.Store({
         let msg = payload.msg;
         msg.receiver = data.data;
         msg.owneremail = email;
-        axios.post(`http://localhost:3000/emailpromo`, msg)
+        axios.post(`https://server.rika.website/emailpromo`, msg)
 
           .then(result => {
             console.log('masuk')
@@ -136,7 +136,7 @@ export default new Vuex.Store({
     async sendSmsPromo({ commit }, payload) {
       let id = localStorage.getItem('uid');
 
-      let { data } = await axios.get(`http://localhost:3000/customer/sms/${payload.food}`, {
+      let { data } = await axios.get(`https://server.rika.website/customer/sms/${payload.food}`, {
         headers: {
           uid: id
         }
@@ -156,7 +156,7 @@ export default new Vuex.Store({
           content:payload.content,
           AllNumber: receiver
         }
-        axios.post(`http://localhost:3000/smspromo`, dataSMS)
+        axios.post(`https://server.rika.website/smspromo`, dataSMS)
           .then(result => {
             console.log('masuk sms')
             swal(
@@ -179,7 +179,7 @@ export default new Vuex.Store({
 
 
     inputTransaction({ commit }, payload) {
-      axios.post(`http://localhost:3000/transaction`, payload)
+      axios.post(`https://server.rika.website/transaction`, payload)
 
         .then(result => {
           swal(
@@ -201,7 +201,7 @@ export default new Vuex.Store({
     },
 
     updateTransaction({ commit }, payload) {
-      axios.put(`http://localhost:3000/transaction/${payload.id}`, payload.data)
+      axios.put(`https://server.rika.website/transaction/${payload.id}`, payload.data)
 
         .then(result => {
           swal(
@@ -223,7 +223,7 @@ export default new Vuex.Store({
     },
 
     deleteTransaction({ commit }, payload) {
-      axios.delete(`http://localhost:3000/transaction/${payload}`)
+      axios.delete(`https://server.rika.website/transaction/${payload}`)
 
         .then(result => {
           swal(
@@ -246,7 +246,7 @@ export default new Vuex.Store({
 
     getCustomers({ commit }) {
       const restaurantId = localStorage.getItem('uid')
-      axios.get(`http://localhost:3000/customer`, {
+      axios.get(`https://server.rika.website/customer`, {
         headers: {
           uid: restaurantId
         }
@@ -260,7 +260,7 @@ export default new Vuex.Store({
         })
     },
     getSingleCustomer({ commit }, payload) {
-      axios.get(`http://localhost:3000/customer/${payload}`)
+      axios.get(`https://server.rika.website/customer/${payload}`)
         .then(result => {
           commit('singleCustomerData', result.data.data)
         })
@@ -270,7 +270,7 @@ export default new Vuex.Store({
     },
 
     getSingleTransaction({ commit }, payload) {
-      axios.get(`http://localhost:3000/transaction/${payload}`)
+      axios.get(`https://server.rika.website/transaction/${payload}`)
         .then(result => {
           commit('singleTransactionData', result.data.data)
         })
@@ -284,7 +284,7 @@ export default new Vuex.Store({
       const restaurantId = localStorage.getItem('uid');
       let transaction = [];
       let items = [];
-      let dataPopulate = await axios.get(`http://localhost:3000/populate`)
+      let dataPopulate = await axios.get(`https://server.rika.website/populate`)
 
       for (let i = 0; i < dataPopulate.data.length; i++) {
         if (dataPopulate.data[i].restaurantId === restaurantId) {
@@ -324,7 +324,7 @@ export default new Vuex.Store({
     },
     deleteCustomer({ commit }, payload) {
       // console.log("di store deletecustomer", payload)
-      axios.delete(`http://localhost:3000/customer/${payload}`)
+      axios.delete(`https://server.rika.website/customer/${payload}`)
 
         .then(result => {
           swal(
@@ -344,7 +344,7 @@ export default new Vuex.Store({
         })
     },
     updateCustomer({ commit }, payload) {
-      axios.put(`http://localhost:3000/customer/${payload.id}`, payload.data)
+      axios.put(`https://server.rika.website/customer/${payload.id}`, payload.data)
 
         .then(result => {
           swal(

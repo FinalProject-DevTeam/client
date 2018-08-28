@@ -95,7 +95,7 @@ export default {
       let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
       if (this.dataName === 'customers-data') {
         let id = localStorage.getItem('uid');
-        let customersData = await axios.get('http://localhost:3000/customer/listbydate', {
+        let customersData = await axios.get('https://server.rika.website/customer/listbydate', {
           headers: {
             uid: id,
           }
@@ -118,7 +118,7 @@ export default {
         }
         let {
           data
-        } = await axios.post('http://localhost:3000/aws/s3', payload)
+        } = await axios.post('https://server.rika.website/aws/s3', payload)
         console.log(data);
       } else {
         let id = today
@@ -129,7 +129,7 @@ export default {
           occupation: "occupation",
           ordered_item: "ordered_item",
         }
-        let transactionsData = await axios.get('http://localhost:3000/populate')
+        let transactionsData = await axios.get('https://server.rika.website/populate')
         console.log(transactionsData.data.length)
         // let arrData = [];
         // transactionsData.data.map((datum) => {
@@ -147,7 +147,7 @@ export default {
         // }
         // let {
         //   data
-        // } = await axios.post('http://localhost:3000/aws/s3', payload)
+        // } = await axios.post('https://server.rika.website/aws/s3', payload)
         // console.log(data);
       }
     },
@@ -171,7 +171,7 @@ export default {
       }
       let {
         data
-      } = await axios.post(`http://localhost:3000/aws/datasource`, payload)
+      } = await axios.post(`https://server.rika.website/aws/datasource`, payload)
       console.log(data);
     },
     async getDataSourceStatus() {
@@ -181,31 +181,31 @@ export default {
         let id = `${localStorage.getItem('uid')}-${today}`
         let {
           data
-        } = await axios.get(`http://localhost:3000/aws/datasource/${id}`)
+        } = await axios.get(`https://server.rika.website/aws/datasource/${id}`)
         console.log(data);
       } else {
         let id = today
         let {
           data
-        } = await axios.get(`http://localhost:3000/aws/datasource/${id}`)
+        } = await axios.get(`https://server.rika.website/aws/datasource/${id}`)
         console.log(data);
       }
     },
     deleteDataSource() {
       if (this.datasourceId === 'restaurantId') {
         let id = localStorage.getItem('uid')
-        axios.delete(`http://localhost:3000/aws/datasource/${id}`);
+        axios.delete(`https://server.rika.website/aws/datasource/${id}`);
       } else {
         let date = new Date();
         let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
         let id = today;
-        axios.delete(`http://localhost:3000/aws/datasource/${id}`);
+        axios.delete(`https://server.rika.website/aws/datasource/${id}`);
       }
     },
     async createMLModel() {
       let {
         data
-      } = await axios.post(`http://localhost:3000/aws/model`)
+      } = await axios.post(`https://server.rika.website/aws/model`)
       console.log(data);
     },
     async getModelStatus() {
@@ -213,41 +213,41 @@ export default {
       let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
       let {
         data
-      } = await axios.get(`http://localhost:3000/aws/model/${today}`)
+      } = await axios.get(`https://server.rika.website/aws/model/${today}`)
       console.log(data);
     },
     async createEvaluation() {
       let {
         data
-      } = await axios.post(`http://localhost:3000/aws/evaluation`)
+      } = await axios.post(`https://server.rika.website/aws/evaluation`)
     },
     async getEvaluationStatus() {
       let date = new Date();
       let today = `${date.getDate()}${date.getMonth()}${date.getFullYear()}`;
       let {
         data
-      } = await axios.get(`http://localhost:3000/aws/evaluation/${today}`)
+      } = await axios.get(`https://server.rika.website/aws/evaluation/${today}`)
       console.log(data);
     },
     async createNewBatchPrediction() {
       let id = localStorage.getItem('uid')
       let {
         data
-      } = await axios.post(`http://localhost:3000/aws/prediction/${id}`)
+      } = await axios.post(`https://server.rika.website/aws/prediction/${id}`)
       console.log(data);
     },
     async getPredictionStatus() {
       let id = localStorage.getItem('uid')
       let {
         data
-      } = await axios.get(`http://localhost:3000/aws/predictionstatus/${id}`)
+      } = await axios.get(`https://server.rika.website/aws/predictionstatus/${id}`)
       console.log(data);
     },
     async getPrediction() {
       let id = localStorage.getItem('uid')
       let {
         data
-      } = await axios.get(`http://localhost:3000/aws/prediction/${id}`)
+      } = await axios.get(`https://server.rika.website/aws/prediction/${id}`)
 
       let resultArr = [];
       for (let i = 1; i < data.length; i++) {
@@ -264,7 +264,7 @@ export default {
         resultArr.push(food)
       }
 
-      let customer = await axios.get(`http://localhost:3000/customer/listbydate`, {
+      let customer = await axios.get(`https://server.rika.website/customer/listbydate`, {
         headers: {
           uid: id,
         }
@@ -281,7 +281,7 @@ export default {
         }
       }
       dataCustomers.map(customer => {
-        axios.post(`http://localhost:3000/customer/setdata/${customer.id}`, customer)
+        axios.post(`https://server.rika.website/customer/setdata/${customer.id}`, customer)
           .then(result => {
             console.log('berhasil', '=>', result.data)
           })

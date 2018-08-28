@@ -131,7 +131,7 @@ export default {
       'updateCustomer'
     ]),
     getOneCustomer() {
-      axios.get(`http://localhost:3000/customer/${this.$route.params.id}`)
+      axios.get(`https://server.rika.website/customer/${this.$route.params.id}`)
 
         .then(result => {
           this.customer = result.data.data

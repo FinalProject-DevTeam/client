@@ -57,34 +57,7 @@
                       </b-checkbox>
                     </div>
                   </div>
-
                 </div>
-                <!-- <div class="block">
-                  <b-checkbox native-value="Nasi Goreng" v-model="editNew.itemsOrdered">
-                    Nasi Goreng
-                  </b-checkbox>
-                  <b-checkbox native-value="Ayam Goreng" v-model="editNew.itemsOrdered">
-                    Ayam Goreng
-                  </b-checkbox>
-                  <b-checkbox native-value="Udang Goreng" v-model="editNew.itemsOrdered">
-                    Udang Goreng
-                  </b-checkbox>
-                  <b-checkbox native-value="Salmon Goreng" v-model="editNew.itemsOrdered">
-                    Salmon Goreng
-                  </b-checkbox>
-                  <b-checkbox native-value="Pisang Goreng" v-model="editNew.itemsOrdered">
-                    Pisang Goreng
-                  </b-checkbox>
-                  <b-checkbox native-value="Kentang Goreng" v-model="editNew.itemsOrdered">
-                    Kentang Goreng
-                  </b-checkbox>
-                  <b-checkbox native-value="Pizza" v-model="editNew.itemsOrdered">
-                    Pizza
-                  </b-checkbox>
-                  <b-checkbox native-value="Sate" v-model="editNew.itemsOrdered">
-                    Sate
-                  </b-checkbox>
-                </div> -->
                 <p class="content">
                   <a class="button is-success" @click="editTransaction()">Update Menu</a>
                 </p>
@@ -123,7 +96,7 @@ export default {
       'updateTransaction'
     ]),
     oneTransaction() {
-      axios.get(`http://localhost:3000/transaction/${this.$route.params.id}`)
+      axios.get(`https://server.rika.website/transaction/${this.$route.params.id}`)
         .then(result => {
           this.transaction = result.data.data
         })
