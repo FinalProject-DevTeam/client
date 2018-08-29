@@ -27,7 +27,7 @@
               <article class="tile is-child box">
                 <p class="title">Top 3 Foods</p>
                 <div class="content">
-                  <div v-for='(data, index) in top3' :key="index">
+                  <div v-for='(data, index) in topfood.slice(0,3)' :key="index">
                     <div class="tags has-addons">
                       <span class="tag is-large">{{data.food}}</span>
                       <span class="tag is-primary is-large">{{data.count}}</span>
@@ -42,7 +42,7 @@
               <article class="tile is-child box">
                 <p class="title">Bottom 3 Foods</p>
                 <div class="content">
-                  <div v-for='(data, index) in bottom3' :key="index">
+                  <div v-for='(data, index) in topfood.slice(topfood.length - 3, topfood.length)' :key="index">
                     <div class="tags has-addons">
                       <span class="tag is-large">{{data.food}}</span>
                       <span class="tag is-primary is-large">{{data.count}}</span>
@@ -93,19 +93,19 @@ export default {
     this.getCustomers();
     this.getTransactions();
     this.top3 = this.topfood.slice(0, 3)
-    let bottoms = this.topfood.slice()
-    bottoms = this.topfood.splice(this.topfood.length - 3, 3)
-    this.bottom3 = bottoms
+      let bottoms = this.topfood.slice()
+      bottoms = this.topfood.splice(this.topfood.length - 3, 3)
+      this.bottom3 = bottoms
 
-    console.log(JSON.stringify(this.topfood))
-    console.log('bottom', this.bottom3)
+      console.log(JSON.stringify(this.topfood))
+      console.log('bottom', this.bottom3)
+    
   },
   methods: {
     ...mapActions([
       'getCustomers', 'getTransactions'
     ]),
   },
-
 };
 </script>
 

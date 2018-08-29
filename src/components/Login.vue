@@ -47,7 +47,7 @@ export default {
   components: {},
   mounted() {
     var uiConfig = {
-      signInSuccessUrl: '/dashboard',
+      signInSuccessUrl: '/#/dashboard',
       signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
